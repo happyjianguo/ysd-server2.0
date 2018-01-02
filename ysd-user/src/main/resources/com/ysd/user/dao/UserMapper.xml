@@ -1,0 +1,1101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ysd.user.dao.UserMapper">
+  <resultMap id="BaseResultMap" type="com.ysd.user.entity.User">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="modify_date" jdbcType="TIMESTAMP" property="modifyDate" />
+    <result column="type_id" jdbcType="INTEGER" property="typeId" />
+    <result column="member_type" jdbcType="INTEGER" property="memberType" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="add_ip" jdbcType="VARCHAR" property="addIp" />
+    <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="birthday" jdbcType="TIMESTAMP" property="birthday" />
+    <result column="card_id" jdbcType="VARCHAR" property="cardId" />
+    <result column="card_pic1" jdbcType="VARCHAR" property="cardPic1" />
+    <result column="card_pic2" jdbcType="VARCHAR" property="cardPic2" />
+    <result column="card_type" jdbcType="VARCHAR" property="cardType" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="area" jdbcType="VARCHAR" property="area" />
+    <result column="area_store" jdbcType="VARCHAR" property="areaStore" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="email_certification_key" jdbcType="VARCHAR" property="emailCertificationKey" />
+    <result column="email_status" jdbcType="INTEGER" property="emailStatus" />
+    <result column="invite_money" jdbcType="DECIMAL" property="inviteMoney" />
+    <result column="invite_userid" jdbcType="INTEGER" property="inviteUserid" />
+    <result column="is_enabled" jdbcType="BIT" property="isEnabled" />
+    <result column="is_lock" jdbcType="BIT" property="isLock" />
+    <result column="login_failure_count" jdbcType="INTEGER" property="loginFailureCount" />
+    <result column="locked_date" jdbcType="TIMESTAMP" property="lockedDate" />
+    <result column="last_ip" jdbcType="VARCHAR" property="lastIp" />
+    <result column="last_time" jdbcType="TIMESTAMP" property="lastTime" />
+    <result column="litpic" jdbcType="VARCHAR" property="litpic" />
+    <result column="login_time" jdbcType="INTEGER" property="loginTime" />
+    <result column="password_recover_key" jdbcType="VARCHAR" property="passwordRecoverKey" />
+    <result column="pay_password" jdbcType="VARCHAR" property="payPassword" />
+    <result column="pay_password_recover_key" jdbcType="VARCHAR" property="payPasswordRecoverKey" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="phone_status" jdbcType="INTEGER" property="phoneStatus" />
+    <result column="real_name" jdbcType="VARCHAR" property="realName" />
+    <result column="real_status" jdbcType="INTEGER" property="realStatus" />
+    <result column="scene_status" jdbcType="INTEGER" property="sceneStatus" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="random_num" jdbcType="VARCHAR" property="randomNum" />
+    <result column="auto_tender_status" jdbcType="INTEGER" property="autoTenderStatus" />
+    <result column="auto_tender_date" jdbcType="TIMESTAMP" property="autoTenderDate" />
+    <result column="auto_tender_times" jdbcType="INTEGER" property="autoTenderTimes" />
+    <result column="auto_tender_rule" jdbcType="INTEGER" property="autoTenderRule" />
+    <result column="auto_tender_money_top" jdbcType="DECIMAL" property="autoTenderMoneyTop" />
+    <result column="auto_tender_money_leave" jdbcType="DECIMAL" property="autoTenderMoneyLeave" />
+    <result column="auto_tender_rate_begin" jdbcType="DECIMAL" property="autoTenderRateBegin" />
+    <result column="auto_tender_rate_end" jdbcType="DECIMAL" property="autoTenderRateEnd" />
+    <result column="auto_tender_reward_begin" jdbcType="DECIMAL" property="autoTenderRewardBegin" />
+    <result column="auto_tender_reward_end" jdbcType="DECIMAL" property="autoTenderRewardEnd" />
+    <result column="auto_tender_limit_begin" jdbcType="INTEGER" property="autoTenderLimitBegin" />
+    <result column="auto_tender_limit_end" jdbcType="INTEGER" property="autoTenderLimitEnd" />
+    <result column="auto_tender_repay_way" jdbcType="VARCHAR" property="autoTenderRepayWay" />
+    <result column="auto_tender_modify_date" jdbcType="TIMESTAMP" property="autoTenderModifyDate" />
+    <result column="tg_no" jdbcType="VARCHAR" property="tgNo" />
+    <result column="tg_one_level_user_id" jdbcType="BIGINT" property="tgOneLevelUserId" />
+    <result column="place_childer_id" jdbcType="BIGINT" property="placeChilderId" />
+    <result column="tg_status" jdbcType="INTEGER" property="tgStatus" />
+    <result column="sum_tender_money" jdbcType="DECIMAL" property="sumTenderMoney" />
+    <result column="email_freq" jdbcType="INTEGER" property="emailFreq" />
+    <result column="phone_code" jdbcType="VARCHAR" property="phoneCode" />
+    <result column="agencyid" jdbcType="INTEGER" property="agencyid" />
+    <result column="agencytype" jdbcType="INTEGER" property="agencytype" />
+    <result column="taste_flag" jdbcType="INTEGER" property="tasteFlag" />
+    <result column="source_from" jdbcType="INTEGER" property="sourceFrom" />
+    <result column="gesture" jdbcType="VARCHAR" property="gesture" />
+    <result column="auto_tender_borrow_type" jdbcType="VARCHAR" property="autoTenderBorrowType" />
+    <result column="device_token" jdbcType="VARCHAR" property="deviceToken" />
+    <result column="token" jdbcType="VARCHAR" property="token" />
+    <result column="bank_cust_no" jdbcType="VARCHAR" property="bankCustNo" />
+    <result column="mtp_trans_date" jdbcType="VARCHAR" property="mtpTransDate" />
+    <result column="mtp_trans_time" jdbcType="VARCHAR" property="mtpTransTime" />
+    <result column="mtp_sign_num" jdbcType="VARCHAR" property="mtpSignNum" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, create_date, modify_date, type_id, member_type, username, password, add_ip, add_time, 
+    address, birthday, card_id, card_pic1, card_pic2, card_type, province, city, area, 
+    area_store, email, email_certification_key, email_status, invite_money, invite_userid, 
+    is_enabled, is_lock, login_failure_count, locked_date, last_ip, last_time, litpic, 
+    login_time, password_recover_key, pay_password, pay_password_recover_key, phone, 
+    phone_status, real_name, real_status, scene_status, sex, status, random_num, auto_tender_status, 
+    auto_tender_date, auto_tender_times, auto_tender_rule, auto_tender_money_top, auto_tender_money_leave, 
+    auto_tender_rate_begin, auto_tender_rate_end, auto_tender_reward_begin, auto_tender_reward_end, 
+    auto_tender_limit_begin, auto_tender_limit_end, auto_tender_repay_way, auto_tender_modify_date, 
+    tg_no, tg_one_level_user_id, place_childer_id, tg_status, sum_tender_money, email_freq, 
+    phone_code, agencyid, agencytype, taste_flag, source_from, gesture, auto_tender_borrow_type, 
+    device_token, token, bank_cust_no,mtp_trans_date,mtp_trans_time,mtp_sign_num
+  </sql>
+  <select id="selectByCriteria" parameterType="com.ysd.user.criteria.UserCriteria" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from fy_user
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from fy_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Integer">
+    delete from fy_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByCriteria" parameterType="com.ysd.user.criteria.UserCriteria">
+    delete from fy_user
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.ysd.user.entity.User" useGeneratedKeys="true">
+    insert into fy_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="modifyDate != null">
+        modify_date,
+      </if>
+      <if test="typeId != null">
+        type_id,
+      </if>
+      <if test="memberType != null">
+        member_type,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="addIp != null">
+        add_ip,
+      </if>
+      <if test="addTime != null">
+        add_time,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+      <if test="cardId != null">
+        card_id,
+      </if>
+      <if test="cardPic1 != null">
+        card_pic1,
+      </if>
+      <if test="cardPic2 != null">
+        card_pic2,
+      </if>
+      <if test="cardType != null">
+        card_type,
+      </if>
+      <if test="province != null">
+        province,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="area != null">
+        area,
+      </if>
+      <if test="areaStore != null">
+        area_store,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="emailCertificationKey != null">
+        email_certification_key,
+      </if>
+      <if test="emailStatus != null">
+        email_status,
+      </if>
+      <if test="inviteMoney != null">
+        invite_money,
+      </if>
+      <if test="inviteUserid != null">
+        invite_userid,
+      </if>
+      <if test="isEnabled != null">
+        is_enabled,
+      </if>
+      <if test="isLock != null">
+        is_lock,
+      </if>
+      <if test="loginFailureCount != null">
+        login_failure_count,
+      </if>
+      <if test="lockedDate != null">
+        locked_date,
+      </if>
+      <if test="lastIp != null">
+        last_ip,
+      </if>
+      <if test="lastTime != null">
+        last_time,
+      </if>
+      <if test="litpic != null">
+        litpic,
+      </if>
+      <if test="loginTime != null">
+        login_time,
+      </if>
+      <if test="passwordRecoverKey != null">
+        password_recover_key,
+      </if>
+      <if test="payPassword != null">
+        pay_password,
+      </if>
+      <if test="payPasswordRecoverKey != null">
+        pay_password_recover_key,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="phoneStatus != null">
+        phone_status,
+      </if>
+      <if test="realName != null">
+        real_name,
+      </if>
+      <if test="realStatus != null">
+        real_status,
+      </if>
+      <if test="sceneStatus != null">
+        scene_status,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="randomNum != null">
+        random_num,
+      </if>
+      <if test="autoTenderStatus != null">
+        auto_tender_status,
+      </if>
+      <if test="autoTenderDate != null">
+        auto_tender_date,
+      </if>
+      <if test="autoTenderTimes != null">
+        auto_tender_times,
+      </if>
+      <if test="autoTenderRule != null">
+        auto_tender_rule,
+      </if>
+      <if test="autoTenderMoneyTop != null">
+        auto_tender_money_top,
+      </if>
+      <if test="autoTenderMoneyLeave != null">
+        auto_tender_money_leave,
+      </if>
+      <if test="autoTenderRateBegin != null">
+        auto_tender_rate_begin,
+      </if>
+      <if test="autoTenderRateEnd != null">
+        auto_tender_rate_end,
+      </if>
+      <if test="autoTenderRewardBegin != null">
+        auto_tender_reward_begin,
+      </if>
+      <if test="autoTenderRewardEnd != null">
+        auto_tender_reward_end,
+      </if>
+      <if test="autoTenderLimitBegin != null">
+        auto_tender_limit_begin,
+      </if>
+      <if test="autoTenderLimitEnd != null">
+        auto_tender_limit_end,
+      </if>
+      <if test="autoTenderRepayWay != null">
+        auto_tender_repay_way,
+      </if>
+      <if test="autoTenderModifyDate != null">
+        auto_tender_modify_date,
+      </if>
+      <if test="tgNo != null">
+        tg_no,
+      </if>
+      <if test="tgOneLevelUserId != null">
+        tg_one_level_user_id,
+      </if>
+      <if test="placeChilderId != null">
+        place_childer_id,
+      </if>
+      <if test="tgStatus != null">
+        tg_status,
+      </if>
+      <if test="sumTenderMoney != null">
+        sum_tender_money,
+      </if>
+      <if test="emailFreq != null">
+        email_freq,
+      </if>
+      <if test="phoneCode != null">
+        phone_code,
+      </if>
+      <if test="agencyid != null">
+        agencyid,
+      </if>
+      <if test="agencytype != null">
+        agencytype,
+      </if>
+      <if test="tasteFlag != null">
+        taste_flag,
+      </if>
+      <if test="sourceFrom != null">
+        source_from,
+      </if>
+      <if test="gesture != null">
+        gesture,
+      </if>
+      <if test="autoTenderBorrowType != null">
+        auto_tender_borrow_type,
+      </if>
+      <if test="deviceToken != null">
+        device_token,
+      </if>
+      <if test="token != null">
+        token,
+      </if>
+      <if test="bankCustNo != null">
+        bank_cust_no,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyDate != null">
+        #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="typeId != null">
+        #{typeId,jdbcType=INTEGER},
+      </if>
+      <if test="memberType != null">
+        #{memberType,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="addIp != null">
+        #{addIp,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cardId != null">
+        #{cardId,jdbcType=VARCHAR},
+      </if>
+      <if test="cardPic1 != null">
+        #{cardPic1,jdbcType=VARCHAR},
+      </if>
+      <if test="cardPic2 != null">
+        #{cardPic2,jdbcType=VARCHAR},
+      </if>
+      <if test="cardType != null">
+        #{cardType,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="areaStore != null">
+        #{areaStore,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="emailCertificationKey != null">
+        #{emailCertificationKey,jdbcType=VARCHAR},
+      </if>
+      <if test="emailStatus != null">
+        #{emailStatus,jdbcType=INTEGER},
+      </if>
+      <if test="inviteMoney != null">
+        #{inviteMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="inviteUserid != null">
+        #{inviteUserid,jdbcType=INTEGER},
+      </if>
+      <if test="isEnabled != null">
+        #{isEnabled,jdbcType=BIT},
+      </if>
+      <if test="isLock != null">
+        #{isLock,jdbcType=BIT},
+      </if>
+      <if test="loginFailureCount != null">
+        #{loginFailureCount,jdbcType=INTEGER},
+      </if>
+      <if test="lockedDate != null">
+        #{lockedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastIp != null">
+        #{lastIp,jdbcType=VARCHAR},
+      </if>
+      <if test="lastTime != null">
+        #{lastTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="litpic != null">
+        #{litpic,jdbcType=VARCHAR},
+      </if>
+      <if test="loginTime != null">
+        #{loginTime,jdbcType=INTEGER},
+      </if>
+      <if test="passwordRecoverKey != null">
+        #{passwordRecoverKey,jdbcType=VARCHAR},
+      </if>
+      <if test="payPassword != null">
+        #{payPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="payPasswordRecoverKey != null">
+        #{payPasswordRecoverKey,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneStatus != null">
+        #{phoneStatus,jdbcType=INTEGER},
+      </if>
+      <if test="realName != null">
+        #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="realStatus != null">
+        #{realStatus,jdbcType=INTEGER},
+      </if>
+      <if test="sceneStatus != null">
+        #{sceneStatus,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="randomNum != null">
+        #{randomNum,jdbcType=VARCHAR},
+      </if>
+      <if test="autoTenderStatus != null">
+        #{autoTenderStatus,jdbcType=INTEGER},
+      </if>
+      <if test="autoTenderDate != null">
+        #{autoTenderDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="autoTenderTimes != null">
+        #{autoTenderTimes,jdbcType=INTEGER},
+      </if>
+      <if test="autoTenderRule != null">
+        #{autoTenderRule,jdbcType=INTEGER},
+      </if>
+      <if test="autoTenderMoneyTop != null">
+        #{autoTenderMoneyTop,jdbcType=DECIMAL},
+      </if>
+      <if test="autoTenderMoneyLeave != null">
+        #{autoTenderMoneyLeave,jdbcType=DECIMAL},
+      </if>
+      <if test="autoTenderRateBegin != null">
+        #{autoTenderRateBegin,jdbcType=DECIMAL},
+      </if>
+      <if test="autoTenderRateEnd != null">
+        #{autoTenderRateEnd,jdbcType=DECIMAL},
+      </if>
+      <if test="autoTenderRewardBegin != null">
+        #{autoTenderRewardBegin,jdbcType=DECIMAL},
+      </if>
+      <if test="autoTenderRewardEnd != null">
+        #{autoTenderRewardEnd,jdbcType=DECIMAL},
+      </if>
+      <if test="autoTenderLimitBegin != null">
+        #{autoTenderLimitBegin,jdbcType=INTEGER},
+      </if>
+      <if test="autoTenderLimitEnd != null">
+        #{autoTenderLimitEnd,jdbcType=INTEGER},
+      </if>
+      <if test="autoTenderRepayWay != null">
+        #{autoTenderRepayWay,jdbcType=VARCHAR},
+      </if>
+      <if test="autoTenderModifyDate != null">
+        #{autoTenderModifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tgNo != null">
+        #{tgNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tgOneLevelUserId != null">
+        #{tgOneLevelUserId,jdbcType=BIGINT},
+      </if>
+      <if test="placeChilderId != null">
+        #{placeChilderId,jdbcType=BIGINT},
+      </if>
+      <if test="tgStatus != null">
+        #{tgStatus,jdbcType=INTEGER},
+      </if>
+      <if test="sumTenderMoney != null">
+        #{sumTenderMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="emailFreq != null">
+        #{emailFreq,jdbcType=INTEGER},
+      </if>
+      <if test="phoneCode != null">
+        #{phoneCode,jdbcType=VARCHAR},
+      </if>
+      <if test="agencyid != null">
+        #{agencyid,jdbcType=INTEGER},
+      </if>
+      <if test="agencytype != null">
+        #{agencytype,jdbcType=INTEGER},
+      </if>
+      <if test="tasteFlag != null">
+        #{tasteFlag,jdbcType=INTEGER},
+      </if>
+      <if test="sourceFrom != null">
+        #{sourceFrom,jdbcType=INTEGER},
+      </if>
+      <if test="gesture != null">
+        #{gesture,jdbcType=VARCHAR},
+      </if>
+      <if test="autoTenderBorrowType != null">
+        #{autoTenderBorrowType,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceToken != null">
+        #{deviceToken,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null">
+        #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCustNo != null">
+        #{bankCustNo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByCriteria" parameterType="com.ysd.user.criteria.UserCriteria" resultType="java.lang.Long">
+    select count(*) from fy_user
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByCriteria" parameterType="map">
+    update fy_user
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.createDate != null">
+        create_date = #{record.createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifyDate != null">
+        modify_date = #{record.modifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.typeId != null">
+        type_id = #{record.typeId,jdbcType=INTEGER},
+      </if>
+      <if test="record.memberType != null">
+        member_type = #{record.memberType,jdbcType=INTEGER},
+      </if>
+      <if test="record.username != null">
+        username = #{record.username,jdbcType=VARCHAR},
+      </if>
+      <if test="record.password != null">
+        password = #{record.password,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addIp != null">
+        add_ip = #{record.addIp,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addTime != null">
+        add_time = #{record.addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.address != null">
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.birthday != null">
+        birthday = #{record.birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.cardId != null">
+        card_id = #{record.cardId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cardPic1 != null">
+        card_pic1 = #{record.cardPic1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cardPic2 != null">
+        card_pic2 = #{record.cardPic2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cardType != null">
+        card_type = #{record.cardType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.province != null">
+        province = #{record.province,jdbcType=VARCHAR},
+      </if>
+      <if test="record.city != null">
+        city = #{record.city,jdbcType=VARCHAR},
+      </if>
+      <if test="record.area != null">
+        area = #{record.area,jdbcType=VARCHAR},
+      </if>
+      <if test="record.areaStore != null">
+        area_store = #{record.areaStore,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null">
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.emailCertificationKey != null">
+        email_certification_key = #{record.emailCertificationKey,jdbcType=VARCHAR},
+      </if>
+      <if test="record.emailStatus != null">
+        email_status = #{record.emailStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.inviteMoney != null">
+        invite_money = #{record.inviteMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="record.inviteUserid != null">
+        invite_userid = #{record.inviteUserid,jdbcType=INTEGER},
+      </if>
+      <if test="record.isEnabled != null">
+        is_enabled = #{record.isEnabled,jdbcType=BIT},
+      </if>
+      <if test="record.isLock != null">
+        is_lock = #{record.isLock,jdbcType=BIT},
+      </if>
+      <if test="record.loginFailureCount != null">
+        login_failure_count = #{record.loginFailureCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.lockedDate != null">
+        locked_date = #{record.lockedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.lastIp != null">
+        last_ip = #{record.lastIp,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastTime != null">
+        last_time = #{record.lastTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.litpic != null">
+        litpic = #{record.litpic,jdbcType=VARCHAR},
+      </if>
+      <if test="record.loginTime != null">
+        login_time = #{record.loginTime,jdbcType=INTEGER},
+      </if>
+      <if test="record.passwordRecoverKey != null">
+        password_recover_key = #{record.passwordRecoverKey,jdbcType=VARCHAR},
+      </if>
+      <if test="record.payPassword != null">
+        pay_password = #{record.payPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="record.payPasswordRecoverKey != null">
+        pay_password_recover_key = #{record.payPasswordRecoverKey,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phone != null">
+        phone = #{record.phone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phoneStatus != null">
+        phone_status = #{record.phoneStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.realName != null">
+        real_name = #{record.realName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.realStatus != null">
+        real_status = #{record.realStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.sceneStatus != null">
+        scene_status = #{record.sceneStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.sex != null">
+        sex = #{record.sex,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.randomNum != null">
+        random_num = #{record.randomNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.autoTenderStatus != null">
+        auto_tender_status = #{record.autoTenderStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.autoTenderDate != null">
+        auto_tender_date = #{record.autoTenderDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.autoTenderTimes != null">
+        auto_tender_times = #{record.autoTenderTimes,jdbcType=INTEGER},
+      </if>
+      <if test="record.autoTenderRule != null">
+        auto_tender_rule = #{record.autoTenderRule,jdbcType=INTEGER},
+      </if>
+      <if test="record.autoTenderMoneyTop != null">
+        auto_tender_money_top = #{record.autoTenderMoneyTop,jdbcType=DECIMAL},
+      </if>
+      <if test="record.autoTenderMoneyLeave != null">
+        auto_tender_money_leave = #{record.autoTenderMoneyLeave,jdbcType=DECIMAL},
+      </if>
+      <if test="record.autoTenderRateBegin != null">
+        auto_tender_rate_begin = #{record.autoTenderRateBegin,jdbcType=DECIMAL},
+      </if>
+      <if test="record.autoTenderRateEnd != null">
+        auto_tender_rate_end = #{record.autoTenderRateEnd,jdbcType=DECIMAL},
+      </if>
+      <if test="record.autoTenderRewardBegin != null">
+        auto_tender_reward_begin = #{record.autoTenderRewardBegin,jdbcType=DECIMAL},
+      </if>
+      <if test="record.autoTenderRewardEnd != null">
+        auto_tender_reward_end = #{record.autoTenderRewardEnd,jdbcType=DECIMAL},
+      </if>
+      <if test="record.autoTenderLimitBegin != null">
+        auto_tender_limit_begin = #{record.autoTenderLimitBegin,jdbcType=INTEGER},
+      </if>
+      <if test="record.autoTenderLimitEnd != null">
+        auto_tender_limit_end = #{record.autoTenderLimitEnd,jdbcType=INTEGER},
+      </if>
+      <if test="record.autoTenderRepayWay != null">
+        auto_tender_repay_way = #{record.autoTenderRepayWay,jdbcType=VARCHAR},
+      </if>
+      <if test="record.autoTenderModifyDate != null">
+        auto_tender_modify_date = #{record.autoTenderModifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.tgNo != null">
+        tg_no = #{record.tgNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tgOneLevelUserId != null">
+        tg_one_level_user_id = #{record.tgOneLevelUserId,jdbcType=BIGINT},
+      </if>
+      <if test="record.placeChilderId != null">
+        place_childer_id = #{record.placeChilderId,jdbcType=BIGINT},
+      </if>
+      <if test="record.tgStatus != null">
+        tg_status = #{record.tgStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.sumTenderMoney != null">
+        sum_tender_money = #{record.sumTenderMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="record.emailFreq != null">
+        email_freq = #{record.emailFreq,jdbcType=INTEGER},
+      </if>
+      <if test="record.phoneCode != null">
+        phone_code = #{record.phoneCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.agencyid != null">
+        agencyid = #{record.agencyid,jdbcType=INTEGER},
+      </if>
+      <if test="record.agencytype != null">
+        agencytype = #{record.agencytype,jdbcType=INTEGER},
+      </if>
+      <if test="record.tasteFlag != null">
+        taste_flag = #{record.tasteFlag,jdbcType=INTEGER},
+      </if>
+      <if test="record.sourceFrom != null">
+        source_from = #{record.sourceFrom,jdbcType=INTEGER},
+      </if>
+      <if test="record.gesture != null">
+        gesture = #{record.gesture,jdbcType=VARCHAR},
+      </if>
+      <if test="record.autoTenderBorrowType != null">
+        auto_tender_borrow_type = #{record.autoTenderBorrowType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deviceToken != null">
+        device_token = #{record.deviceToken,jdbcType=VARCHAR},
+      </if>
+      <if test="record.token != null">
+        token = #{record.token,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bankCustNo != null">
+        bank_cust_no = #{record.bankCustNo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateById" parameterType="com.ysd.user.entity.User">
+    update fy_user
+    <set>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyDate != null">
+        modify_date = #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="typeId != null">
+        type_id = #{typeId,jdbcType=INTEGER},
+      </if>
+      <if test="memberType != null">
+        member_type = #{memberType,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="addIp != null">
+        add_ip = #{addIp,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null">
+        add_time = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cardId != null">
+        card_id = #{cardId,jdbcType=VARCHAR},
+      </if>
+      <if test="cardPic1 != null">
+        card_pic1 = #{cardPic1,jdbcType=VARCHAR},
+      </if>
+      <if test="cardPic2 != null">
+        card_pic2 = #{cardPic2,jdbcType=VARCHAR},
+      </if>
+      <if test="cardType != null">
+        card_type = #{cardType,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        area = #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="areaStore != null">
+        area_store = #{areaStore,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="emailCertificationKey != null">
+        email_certification_key = #{emailCertificationKey,jdbcType=VARCHAR},
+      </if>
+      <if test="emailStatus != null">
+        email_status = #{emailStatus,jdbcType=INTEGER},
+      </if>
+      <if test="inviteMoney != null">
+        invite_money = #{inviteMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="inviteUserid != null">
+        invite_userid = #{inviteUserid,jdbcType=INTEGER},
+      </if>
+      <if test="isEnabled != null">
+        is_enabled = #{isEnabled,jdbcType=BIT},
+      </if>
+      <if test="isLock != null">
+        is_lock = #{isLock,jdbcType=BIT},
+      </if>
+      <if test="loginFailureCount != null">
+        login_failure_count = #{loginFailureCount,jdbcType=INTEGER},
+      </if>
+      <if test="lockedDate != null">
+        locked_date = #{lockedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastIp != null">
+        last_ip = #{lastIp,jdbcType=VARCHAR},
+      </if>
+      <if test="lastTime != null">
+        last_time = #{lastTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="litpic != null">
+        litpic = #{litpic,jdbcType=VARCHAR},
+      </if>
+      <if test="loginTime != null">
+        login_time = #{loginTime,jdbcType=INTEGER},
+      </if>
+      <if test="passwordRecoverKey != null">
+        password_recover_key = #{passwordRecoverKey,jdbcType=VARCHAR},
+      </if>
+      <if test="payPassword != null">
+        pay_password = #{payPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="payPasswordRecoverKey != null">
+        pay_password_recover_key = #{payPasswordRecoverKey,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneStatus != null">
+        phone_status = #{phoneStatus,jdbcType=INTEGER},
+      </if>
+      <if test="realName != null">
+        real_name = #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="realStatus != null">
+        real_status = #{realStatus,jdbcType=INTEGER},
+      </if>
+      <if test="sceneStatus != null">
+        scene_status = #{sceneStatus,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="randomNum != null">
+        random_num = #{randomNum,jdbcType=VARCHAR},
+      </if>
+      <if test="autoTenderStatus != null">
+        auto_tender_status = #{autoTenderStatus,jdbcType=INTEGER},
+      </if>
+      <if test="autoTenderDate != null">
+        auto_tender_date = #{autoTenderDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="autoTenderTimes != null">
+        auto_tender_times = #{autoTenderTimes,jdbcType=INTEGER},
+      </if>
+      <if test="autoTenderRule != null">
+        auto_tender_rule = #{autoTenderRule,jdbcType=INTEGER},
+      </if>
+      <if test="autoTenderMoneyTop != null">
+        auto_tender_money_top = #{autoTenderMoneyTop,jdbcType=DECIMAL},
+      </if>
+      <if test="autoTenderMoneyLeave != null">
+        auto_tender_money_leave = #{autoTenderMoneyLeave,jdbcType=DECIMAL},
+      </if>
+      <if test="autoTenderRateBegin != null">
+        auto_tender_rate_begin = #{autoTenderRateBegin,jdbcType=DECIMAL},
+      </if>
+      <if test="autoTenderRateEnd != null">
+        auto_tender_rate_end = #{autoTenderRateEnd,jdbcType=DECIMAL},
+      </if>
+      <if test="autoTenderRewardBegin != null">
+        auto_tender_reward_begin = #{autoTenderRewardBegin,jdbcType=DECIMAL},
+      </if>
+      <if test="autoTenderRewardEnd != null">
+        auto_tender_reward_end = #{autoTenderRewardEnd,jdbcType=DECIMAL},
+      </if>
+      <if test="autoTenderLimitBegin != null">
+        auto_tender_limit_begin = #{autoTenderLimitBegin,jdbcType=INTEGER},
+      </if>
+      <if test="autoTenderLimitEnd != null">
+        auto_tender_limit_end = #{autoTenderLimitEnd,jdbcType=INTEGER},
+      </if>
+      <if test="autoTenderRepayWay != null">
+        auto_tender_repay_way = #{autoTenderRepayWay,jdbcType=VARCHAR},
+      </if>
+      <if test="autoTenderModifyDate != null">
+        auto_tender_modify_date = #{autoTenderModifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tgNo != null">
+        tg_no = #{tgNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tgOneLevelUserId != null">
+        tg_one_level_user_id = #{tgOneLevelUserId,jdbcType=BIGINT},
+      </if>
+      <if test="placeChilderId != null">
+        place_childer_id = #{placeChilderId,jdbcType=BIGINT},
+      </if>
+      <if test="tgStatus != null">
+        tg_status = #{tgStatus,jdbcType=INTEGER},
+      </if>
+      <if test="sumTenderMoney != null">
+        sum_tender_money = #{sumTenderMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="emailFreq != null">
+        email_freq = #{emailFreq,jdbcType=INTEGER},
+      </if>
+      <if test="phoneCode != null">
+        phone_code = #{phoneCode,jdbcType=VARCHAR},
+      </if>
+      <if test="agencyid != null">
+        agencyid = #{agencyid,jdbcType=INTEGER},
+      </if>
+      <if test="agencytype != null">
+        agencytype = #{agencytype,jdbcType=INTEGER},
+      </if>
+      <if test="tasteFlag != null">
+        taste_flag = #{tasteFlag,jdbcType=INTEGER},
+      </if>
+      <if test="sourceFrom != null">
+        source_from = #{sourceFrom,jdbcType=INTEGER},
+      </if>
+      <if test="gesture != null">
+        gesture = #{gesture,jdbcType=VARCHAR},
+      </if>
+      <if test="autoTenderBorrowType != null">
+        auto_tender_borrow_type = #{autoTenderBorrowType,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceToken != null">
+        device_token = #{deviceToken,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null">
+        token = #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCustNo != null">
+        bank_cust_no = #{bankCustNo,jdbcType=VARCHAR},
+      </if>
+        <if test="mtpTransDate != null">
+            mtp_trans_date = #{mtpTransDate,jdbcType=VARCHAR},
+        </if>
+        <if test="mtpTransTime != null">
+            mtp_trans_time = #{mtpTransTime,jdbcType=VARCHAR},
+        </if>
+        <if test="mtpSignNum != null">
+            mtp_sign_num = #{mtpSignNum,jdbcType=VARCHAR},
+        </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+
+
+  <!--实名认证第二步更新状态-->
+  <update id="updateByPhoneCode" parameterType="map">
+    update fy_user set
+      real_status=#{realStatus}  where id = #{id} and real_status=#{oriRealStatus}
+  </update>
+</mapper>

@@ -1,0 +1,16 @@
+mvn install:install-file -DgroupId=cryptixJCE -DartifactId=cryptixJCE -Dversion=1.0 -Dfile=cryptixJCE.jar -Dpackaging=jar
+
+mvn install:install-file -DgroupId=encryption -DartifactId=encryption -Dversion=1.0 -Dfile=encryption.jar -Dpackaging=jar
+
+mvn install:install-file -DgroupId=hap -DartifactId=hap -Dversion=2.0 -Dfile=hap-2.0.jar -Dpackaging=jar
+
+mvn install:install-file -DgroupId=HTC -DartifactId=HTC -Dversion=1.0 -Dfile=HTC.jar -Dpackaging=jar
+
+mvn install:install-file -DgroupId=jaxen -DartifactId=jaxen -Dversion=1.1-beta-4 -Dfile=jaxen-1.1-beta-4.jar -Dpackaging=jar
+
+mvn install:install-file -DgroupId=mind -DartifactId=mind -Dversion=1.0 -Dfile=mind.jar -Dpackaging=jar
+
+mvn install:install-file -DgroupId=org.springframework.core -DartifactId=org.springframework.core -Dversion=3.1.1.RELEASE -Dfile=org.springframework.core-3.1.1.RELEASE.jar -Dpackaging=jar
+
+mvn install:install-file -DgroupId=xmlsec -DartifactId=xmlsec -Dversion=1.4.1 -Dfile=xmlsec-1.4.1.jar -Dpackaging=jar
+

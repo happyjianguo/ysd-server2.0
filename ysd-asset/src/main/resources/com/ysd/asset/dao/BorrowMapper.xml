@@ -1,0 +1,1602 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ysd.asset.dao.BorrowMapper">
+  <resultMap id="BaseResultMap" type="com.ysd.asset.entity.Borrow">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="maxborrow_id" jdbcType="INTEGER" property="maxborrowId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="agency_id" jdbcType="INTEGER" property="agencyId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="order_num" jdbcType="INTEGER" property="orderNum" />
+    <result column="divides" jdbcType="INTEGER" property="divides" />
+    <result column="hits" jdbcType="INTEGER" property="hits" />
+    <result column="is_vouch" jdbcType="VARCHAR" property="isVouch" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="verify_user" jdbcType="VARCHAR" property="verifyUser" />
+    <result column="verify_time" jdbcType="TIMESTAMP" property="verifyTime" />
+    <result column="verify_remark" jdbcType="VARCHAR" property="verifyRemark" />
+    <result column="repayment_user" jdbcType="INTEGER" property="repaymentUser" />
+    <result column="forst_account" jdbcType="VARCHAR" property="forstAccount" />
+    <result column="repayment_account" jdbcType="VARCHAR" property="repaymentAccount" />
+    <result column="monthly_repayment" jdbcType="VARCHAR" property="monthlyRepayment" />
+    <result column="repayment_yesaccount" jdbcType="VARCHAR" property="repaymentYesaccount" />
+    <result column="repayment_time" jdbcType="TIMESTAMP" property="repaymentTime" />
+    <result column="repamyent_remark" jdbcType="VARCHAR" property="repamyentRemark" />
+    <result column="success_time" jdbcType="TIMESTAMP" property="successTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="payment_account" jdbcType="VARCHAR" property="paymentAccount" />
+    <result column="each_time" jdbcType="VARCHAR" property="eachTime" />
+    <result column="use_reason" jdbcType="VARCHAR" property="useReason" />
+    <result column="time_limit" jdbcType="VARCHAR" property="timeLimit" />
+    <result column="style" jdbcType="VARCHAR" property="style" />
+    <result column="repayment_period" jdbcType="INTEGER" property="repaymentPeriod" />
+    <result column="account" jdbcType="VARCHAR" property="account" />
+    <result column="account_yes" jdbcType="VARCHAR" property="accountYes" />
+    <result column="tender_times" jdbcType="VARCHAR" property="tenderTimes" />
+    <result column="apr" jdbcType="DECIMAL" property="apr" />
+    <result column="lowest_account" jdbcType="VARCHAR" property="lowestAccount" />
+    <result column="most_account" jdbcType="VARCHAR" property="mostAccount" />
+    <result column="valid_time" jdbcType="VARCHAR" property="validTime" />
+    <result column="award" jdbcType="VARCHAR" property="award" />
+    <result column="deposit_money" jdbcType="DECIMAL" property="depositMoney" />
+    <result column="fee_type" jdbcType="INTEGER" property="feeType" />
+    <result column="fee_money" jdbcType="DECIMAL" property="feeMoney" />
+    <result column="part_account" jdbcType="VARCHAR" property="partAccount" />
+    <result column="funds" jdbcType="VARCHAR" property="funds" />
+    <result column="is_false" jdbcType="VARCHAR" property="isFalse" />
+    <result column="open_account" jdbcType="VARCHAR" property="openAccount" />
+    <result column="open_borrow" jdbcType="VARCHAR" property="openBorrow" />
+    <result column="open_tender" jdbcType="VARCHAR" property="openTender" />
+    <result column="open_credit" jdbcType="VARCHAR" property="openCredit" />
+    <result column="is_do" jdbcType="VARCHAR" property="isDo" />
+    <result column="is_mb" jdbcType="VARCHAR" property="isMb" />
+    <result column="is_fast" jdbcType="VARCHAR" property="isFast" />
+    <result column="is_dxb" jdbcType="VARCHAR" property="isDxb" />
+    <result column="pwd" jdbcType="VARCHAR" property="pwd" />
+    <result column="isday" jdbcType="VARCHAR" property="isday" />
+    <result column="time_limit_day" jdbcType="VARCHAR" property="timeLimitDay" />
+    <result column="add_persion" jdbcType="VARCHAR" property="addPersion" />
+    <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="update_persion" jdbcType="VARCHAR" property="updatePersion" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="operator_ip" jdbcType="VARCHAR" property="operatorIp" />
+    <result column="schedule" jdbcType="VARCHAR" property="schedule" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="modify_date" jdbcType="TIMESTAMP" property="modifyDate" />
+    <result column="balance" jdbcType="VARCHAR" property="balance" />
+    <result column="bor_image_first" jdbcType="VARCHAR" property="borImageFirst" />
+    <result column="bor_stages" jdbcType="VARCHAR" property="borStages" />
+    <result column="wander_tender_times" jdbcType="INTEGER" property="wanderTenderTimes" />
+    <result column="wander_piece_size" jdbcType="INTEGER" property="wanderPieceSize" />
+    <result column="wander_piece_money" jdbcType="DECIMAL" property="wanderPieceMoney" />
+    <result column="wander_redeem_times" jdbcType="INTEGER" property="wanderRedeemTimes" />
+    <result column="final_repay_date" jdbcType="TIMESTAMP" property="finalRepayDate" />
+    <result column="next_repay_date" jdbcType="TIMESTAMP" property="nextRepayDate" />
+    <result column="bonus" jdbcType="DECIMAL" property="bonus" />
+    <result column="interest_total" jdbcType="DECIMAL" property="interestTotal" />
+    <result column="repay_capital" jdbcType="DECIMAL" property="repayCapital" />
+    <result column="repay_interest" jdbcType="DECIMAL" property="repayInterest" />
+    <result column="payed_capital" jdbcType="DECIMAL" property="payedCapital" />
+    <result column="payed_interest" jdbcType="DECIMAL" property="payedInterest" />
+    <result column="show_top" jdbcType="INTEGER" property="showTop" />
+    <result column="show_sort" jdbcType="INTEGER" property="showSort" />
+    <result column="final_rate_year" jdbcType="DECIMAL" property="finalRateYear" />
+    <result column="auto_tender_status" jdbcType="INTEGER" property="autoTenderStatus" />
+    <result column="auto_tender_repay_way" jdbcType="INTEGER" property="autoTenderRepayWay" />
+    <result column="continue_award_rate" jdbcType="DECIMAL" property="continueAwardRate" />
+    <result column="vary_year_rate" jdbcType="DECIMAL" property="varyYearRate" />
+    <result column="vary_month_limit" jdbcType="DECIMAL" property="varyMonthLimit" />
+    <result column="parent_flg" jdbcType="INTEGER" property="parentFlg" />
+    <result column="parent_id" jdbcType="INTEGER" property="parentId" />
+    <result column="parent_money" jdbcType="INTEGER" property="parentMoney" />
+    <result column="parent_account" jdbcType="INTEGER" property="parentAccount" />
+    <result column="parent_status" jdbcType="INTEGER" property="parentStatus" />
+    <result column="award_type" jdbcType="INTEGER" property="awardType" />
+    <result column="award_funds" jdbcType="VARCHAR" property="awardFunds" />
+    <result column="over_date" jdbcType="TIMESTAMP" property="overDate" />
+    <result column="business_code" jdbcType="VARCHAR" property="businessCode" />
+    <result column="award_scale" jdbcType="DECIMAL" property="awardScale" />
+    <result column="borrow_money" jdbcType="DECIMAL" property="borrowMoney" />
+    <result column="fangkuan_status" jdbcType="INTEGER" property="fangkuanStatus" />
+    <result column="rong_xun_flg" jdbcType="INTEGER" property="rongXunFlg" />
+    <result column="tzxf" jdbcType="DECIMAL" property="tzxf" />
+    <result column="tzth" jdbcType="DECIMAL" property="tzth" />
+    <result column="sgdg" jdbcType="DECIMAL" property="sgdg" />
+    <result column="base_apr" jdbcType="DECIMAL" property="baseApr" />
+    <result column="award_apr" jdbcType="DECIMAL" property="awardApr" />
+    <result column="cg_status" jdbcType="CHAR" property="cgStatus" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ysd.asset.entity.Borrow">
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+    <result column="order_list" jdbcType="LONGVARCHAR" property="orderList" />
+    <result column="bor_image" jdbcType="LONGVARCHAR" property="borImage" />
+    <result column="wander_stages" jdbcType="LONGVARCHAR" property="wanderStages" />
+    <result column="borrow_info_json" jdbcType="LONGVARCHAR" property="borrowInfoJson" />
+    <result column="bor_image2" jdbcType="LONGVARCHAR" property="borImage2" />
+    <result column="borrow_verify_json" jdbcType="LONGVARCHAR" property="borrowVerifyJson" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, maxborrow_id, user_id, agency_id, name, status, order_num, divides, hits, is_vouch, 
+    type, verify_user, verify_time, verify_remark, repayment_user, forst_account, repayment_account, 
+    monthly_repayment, repayment_yesaccount, repayment_time, repamyent_remark, success_time, 
+    end_time, payment_account, each_time, use_reason, time_limit, style, repayment_period, 
+    account, account_yes, tender_times, apr, lowest_account, most_account, valid_time, 
+    award, deposit_money, fee_type, fee_money, part_account, funds, is_false, open_account, 
+    open_borrow, open_tender, open_credit, is_do, is_mb, is_fast, is_dxb, pwd, isday, 
+    time_limit_day, add_persion, add_time, update_persion, update_time, operator_ip, 
+    schedule, create_date, modify_date, balance, bor_image_first, bor_stages, wander_tender_times, 
+    wander_piece_size, wander_piece_money, wander_redeem_times, final_repay_date, next_repay_date, 
+    bonus, interest_total, repay_capital, repay_interest, payed_capital, payed_interest, 
+    show_top, show_sort, final_rate_year, auto_tender_status, auto_tender_repay_way, 
+    continue_award_rate, vary_year_rate, vary_month_limit, parent_flg, parent_id, parent_money, 
+    parent_account, parent_status, award_type, award_funds, over_date, business_code, 
+    award_scale, borrow_money, fangkuan_status, rong_xun_flg, tzxf, tzth, sgdg, base_apr, 
+    award_apr, cg_status
+  </sql>
+  <sql id="Blob_Column_List">
+    content, order_list, bor_image, wander_stages, borrow_info_json, bor_image2, borrow_verify_json
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.ysd.asset.criteria.BorrowCriteria" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from fy_borrow
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByCriteria" parameterType="com.ysd.asset.criteria.BorrowCriteria" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from fy_borrow
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectById" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from fy_borrow
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Integer">
+    delete from fy_borrow
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByCriteria" parameterType="com.ysd.asset.criteria.BorrowCriteria">
+    delete from fy_borrow
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.ysd.asset.entity.Borrow" useGeneratedKeys="true">
+    insert into fy_borrow
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="maxborrowId != null">
+        maxborrow_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="agencyId != null">
+        agency_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="orderNum != null">
+        order_num,
+      </if>
+      <if test="divides != null">
+        divides,
+      </if>
+      <if test="hits != null">
+        hits,
+      </if>
+      <if test="isVouch != null">
+        is_vouch,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="verifyUser != null">
+        verify_user,
+      </if>
+      <if test="verifyTime != null">
+        verify_time,
+      </if>
+      <if test="verifyRemark != null">
+        verify_remark,
+      </if>
+      <if test="repaymentUser != null">
+        repayment_user,
+      </if>
+      <if test="forstAccount != null">
+        forst_account,
+      </if>
+      <if test="repaymentAccount != null">
+        repayment_account,
+      </if>
+      <if test="monthlyRepayment != null">
+        monthly_repayment,
+      </if>
+      <if test="repaymentYesaccount != null">
+        repayment_yesaccount,
+      </if>
+      <if test="repaymentTime != null">
+        repayment_time,
+      </if>
+      <if test="repamyentRemark != null">
+        repamyent_remark,
+      </if>
+      <if test="successTime != null">
+        success_time,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+      <if test="paymentAccount != null">
+        payment_account,
+      </if>
+      <if test="eachTime != null">
+        each_time,
+      </if>
+      <if test="useReason != null">
+        use_reason,
+      </if>
+      <if test="timeLimit != null">
+        time_limit,
+      </if>
+      <if test="style != null">
+        style,
+      </if>
+      <if test="repaymentPeriod != null">
+        repayment_period,
+      </if>
+      <if test="account != null">
+        account,
+      </if>
+      <if test="accountYes != null">
+        account_yes,
+      </if>
+      <if test="tenderTimes != null">
+        tender_times,
+      </if>
+      <if test="apr != null">
+        apr,
+      </if>
+      <if test="lowestAccount != null">
+        lowest_account,
+      </if>
+      <if test="mostAccount != null">
+        most_account,
+      </if>
+      <if test="validTime != null">
+        valid_time,
+      </if>
+      <if test="award != null">
+        award,
+      </if>
+      <if test="depositMoney != null">
+        deposit_money,
+      </if>
+      <if test="feeType != null">
+        fee_type,
+      </if>
+      <if test="feeMoney != null">
+        fee_money,
+      </if>
+      <if test="partAccount != null">
+        part_account,
+      </if>
+      <if test="funds != null">
+        funds,
+      </if>
+      <if test="isFalse != null">
+        is_false,
+      </if>
+      <if test="openAccount != null">
+        open_account,
+      </if>
+      <if test="openBorrow != null">
+        open_borrow,
+      </if>
+      <if test="openTender != null">
+        open_tender,
+      </if>
+      <if test="openCredit != null">
+        open_credit,
+      </if>
+      <if test="isDo != null">
+        is_do,
+      </if>
+      <if test="isMb != null">
+        is_mb,
+      </if>
+      <if test="isFast != null">
+        is_fast,
+      </if>
+      <if test="isDxb != null">
+        is_dxb,
+      </if>
+      <if test="pwd != null">
+        pwd,
+      </if>
+      <if test="isday != null">
+        isday,
+      </if>
+      <if test="timeLimitDay != null">
+        time_limit_day,
+      </if>
+      <if test="addPersion != null">
+        add_persion,
+      </if>
+      <if test="addTime != null">
+        add_time,
+      </if>
+      <if test="updatePersion != null">
+        update_persion,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="operatorIp != null">
+        operator_ip,
+      </if>
+      <if test="schedule != null">
+        schedule,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="modifyDate != null">
+        modify_date,
+      </if>
+      <if test="balance != null">
+        balance,
+      </if>
+      <if test="borImageFirst != null">
+        bor_image_first,
+      </if>
+      <if test="borStages != null">
+        bor_stages,
+      </if>
+      <if test="wanderTenderTimes != null">
+        wander_tender_times,
+      </if>
+      <if test="wanderPieceSize != null">
+        wander_piece_size,
+      </if>
+      <if test="wanderPieceMoney != null">
+        wander_piece_money,
+      </if>
+      <if test="wanderRedeemTimes != null">
+        wander_redeem_times,
+      </if>
+      <if test="finalRepayDate != null">
+        final_repay_date,
+      </if>
+      <if test="nextRepayDate != null">
+        next_repay_date,
+      </if>
+      <if test="bonus != null">
+        bonus,
+      </if>
+      <if test="interestTotal != null">
+        interest_total,
+      </if>
+      <if test="repayCapital != null">
+        repay_capital,
+      </if>
+      <if test="repayInterest != null">
+        repay_interest,
+      </if>
+      <if test="payedCapital != null">
+        payed_capital,
+      </if>
+      <if test="payedInterest != null">
+        payed_interest,
+      </if>
+      <if test="showTop != null">
+        show_top,
+      </if>
+      <if test="showSort != null">
+        show_sort,
+      </if>
+      <if test="finalRateYear != null">
+        final_rate_year,
+      </if>
+      <if test="autoTenderStatus != null">
+        auto_tender_status,
+      </if>
+      <if test="autoTenderRepayWay != null">
+        auto_tender_repay_way,
+      </if>
+      <if test="continueAwardRate != null">
+        continue_award_rate,
+      </if>
+      <if test="varyYearRate != null">
+        vary_year_rate,
+      </if>
+      <if test="varyMonthLimit != null">
+        vary_month_limit,
+      </if>
+      <if test="parentFlg != null">
+        parent_flg,
+      </if>
+      <if test="parentId != null">
+        parent_id,
+      </if>
+      <if test="parentMoney != null">
+        parent_money,
+      </if>
+      <if test="parentAccount != null">
+        parent_account,
+      </if>
+      <if test="parentStatus != null">
+        parent_status,
+      </if>
+      <if test="awardType != null">
+        award_type,
+      </if>
+      <if test="awardFunds != null">
+        award_funds,
+      </if>
+      <if test="overDate != null">
+        over_date,
+      </if>
+      <if test="businessCode != null">
+        business_code,
+      </if>
+      <if test="awardScale != null">
+        award_scale,
+      </if>
+      <if test="borrowMoney != null">
+        borrow_money,
+      </if>
+      <if test="fangkuanStatus != null">
+        fangkuan_status,
+      </if>
+      <if test="rongXunFlg != null">
+        rong_xun_flg,
+      </if>
+      <if test="tzxf != null">
+        tzxf,
+      </if>
+      <if test="tzth != null">
+        tzth,
+      </if>
+      <if test="sgdg != null">
+        sgdg,
+      </if>
+      <if test="baseApr != null">
+        base_apr,
+      </if>
+      <if test="awardApr != null">
+        award_apr,
+      </if>
+      <if test="cgStatus != null">
+        cg_status,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="orderList != null">
+        order_list,
+      </if>
+      <if test="borImage != null">
+        bor_image,
+      </if>
+      <if test="wanderStages != null">
+        wander_stages,
+      </if>
+      <if test="borrowInfoJson != null">
+        borrow_info_json,
+      </if>
+      <if test="borImage2 != null">
+        bor_image2,
+      </if>
+      <if test="borrowVerifyJson != null">
+        borrow_verify_json,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="maxborrowId != null">
+        #{maxborrowId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="agencyId != null">
+        #{agencyId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="orderNum != null">
+        #{orderNum,jdbcType=INTEGER},
+      </if>
+      <if test="divides != null">
+        #{divides,jdbcType=INTEGER},
+      </if>
+      <if test="hits != null">
+        #{hits,jdbcType=INTEGER},
+      </if>
+      <if test="isVouch != null">
+        #{isVouch,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="verifyUser != null">
+        #{verifyUser,jdbcType=VARCHAR},
+      </if>
+      <if test="verifyTime != null">
+        #{verifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="verifyRemark != null">
+        #{verifyRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="repaymentUser != null">
+        #{repaymentUser,jdbcType=INTEGER},
+      </if>
+      <if test="forstAccount != null">
+        #{forstAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="repaymentAccount != null">
+        #{repaymentAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="monthlyRepayment != null">
+        #{monthlyRepayment,jdbcType=VARCHAR},
+      </if>
+      <if test="repaymentYesaccount != null">
+        #{repaymentYesaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="repaymentTime != null">
+        #{repaymentTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="repamyentRemark != null">
+        #{repamyentRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="successTime != null">
+        #{successTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="paymentAccount != null">
+        #{paymentAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="eachTime != null">
+        #{eachTime,jdbcType=VARCHAR},
+      </if>
+      <if test="useReason != null">
+        #{useReason,jdbcType=VARCHAR},
+      </if>
+      <if test="timeLimit != null">
+        #{timeLimit,jdbcType=VARCHAR},
+      </if>
+      <if test="style != null">
+        #{style,jdbcType=VARCHAR},
+      </if>
+      <if test="repaymentPeriod != null">
+        #{repaymentPeriod,jdbcType=INTEGER},
+      </if>
+      <if test="account != null">
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="accountYes != null">
+        #{accountYes,jdbcType=VARCHAR},
+      </if>
+      <if test="tenderTimes != null">
+        #{tenderTimes,jdbcType=VARCHAR},
+      </if>
+      <if test="apr != null">
+        #{apr,jdbcType=DECIMAL},
+      </if>
+      <if test="lowestAccount != null">
+        #{lowestAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="mostAccount != null">
+        #{mostAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="validTime != null">
+        #{validTime,jdbcType=VARCHAR},
+      </if>
+      <if test="award != null">
+        #{award,jdbcType=VARCHAR},
+      </if>
+      <if test="depositMoney != null">
+        #{depositMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="feeType != null">
+        #{feeType,jdbcType=INTEGER},
+      </if>
+      <if test="feeMoney != null">
+        #{feeMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="partAccount != null">
+        #{partAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="funds != null">
+        #{funds,jdbcType=VARCHAR},
+      </if>
+      <if test="isFalse != null">
+        #{isFalse,jdbcType=VARCHAR},
+      </if>
+      <if test="openAccount != null">
+        #{openAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="openBorrow != null">
+        #{openBorrow,jdbcType=VARCHAR},
+      </if>
+      <if test="openTender != null">
+        #{openTender,jdbcType=VARCHAR},
+      </if>
+      <if test="openCredit != null">
+        #{openCredit,jdbcType=VARCHAR},
+      </if>
+      <if test="isDo != null">
+        #{isDo,jdbcType=VARCHAR},
+      </if>
+      <if test="isMb != null">
+        #{isMb,jdbcType=VARCHAR},
+      </if>
+      <if test="isFast != null">
+        #{isFast,jdbcType=VARCHAR},
+      </if>
+      <if test="isDxb != null">
+        #{isDxb,jdbcType=VARCHAR},
+      </if>
+      <if test="pwd != null">
+        #{pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="isday != null">
+        #{isday,jdbcType=VARCHAR},
+      </if>
+      <if test="timeLimitDay != null">
+        #{timeLimitDay,jdbcType=VARCHAR},
+      </if>
+      <if test="addPersion != null">
+        #{addPersion,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatePersion != null">
+        #{updatePersion,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operatorIp != null">
+        #{operatorIp,jdbcType=VARCHAR},
+      </if>
+      <if test="schedule != null">
+        #{schedule,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyDate != null">
+        #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="balance != null">
+        #{balance,jdbcType=VARCHAR},
+      </if>
+      <if test="borImageFirst != null">
+        #{borImageFirst,jdbcType=VARCHAR},
+      </if>
+      <if test="borStages != null">
+        #{borStages,jdbcType=VARCHAR},
+      </if>
+      <if test="wanderTenderTimes != null">
+        #{wanderTenderTimes,jdbcType=INTEGER},
+      </if>
+      <if test="wanderPieceSize != null">
+        #{wanderPieceSize,jdbcType=INTEGER},
+      </if>
+      <if test="wanderPieceMoney != null">
+        #{wanderPieceMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="wanderRedeemTimes != null">
+        #{wanderRedeemTimes,jdbcType=INTEGER},
+      </if>
+      <if test="finalRepayDate != null">
+        #{finalRepayDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nextRepayDate != null">
+        #{nextRepayDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bonus != null">
+        #{bonus,jdbcType=DECIMAL},
+      </if>
+      <if test="interestTotal != null">
+        #{interestTotal,jdbcType=DECIMAL},
+      </if>
+      <if test="repayCapital != null">
+        #{repayCapital,jdbcType=DECIMAL},
+      </if>
+      <if test="repayInterest != null">
+        #{repayInterest,jdbcType=DECIMAL},
+      </if>
+      <if test="payedCapital != null">
+        #{payedCapital,jdbcType=DECIMAL},
+      </if>
+      <if test="payedInterest != null">
+        #{payedInterest,jdbcType=DECIMAL},
+      </if>
+      <if test="showTop != null">
+        #{showTop,jdbcType=INTEGER},
+      </if>
+      <if test="showSort != null">
+        #{showSort,jdbcType=INTEGER},
+      </if>
+      <if test="finalRateYear != null">
+        #{finalRateYear,jdbcType=DECIMAL},
+      </if>
+      <if test="autoTenderStatus != null">
+        #{autoTenderStatus,jdbcType=INTEGER},
+      </if>
+      <if test="autoTenderRepayWay != null">
+        #{autoTenderRepayWay,jdbcType=INTEGER},
+      </if>
+      <if test="continueAwardRate != null">
+        #{continueAwardRate,jdbcType=DECIMAL},
+      </if>
+      <if test="varyYearRate != null">
+        #{varyYearRate,jdbcType=DECIMAL},
+      </if>
+      <if test="varyMonthLimit != null">
+        #{varyMonthLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="parentFlg != null">
+        #{parentFlg,jdbcType=INTEGER},
+      </if>
+      <if test="parentId != null">
+        #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="parentMoney != null">
+        #{parentMoney,jdbcType=INTEGER},
+      </if>
+      <if test="parentAccount != null">
+        #{parentAccount,jdbcType=INTEGER},
+      </if>
+      <if test="parentStatus != null">
+        #{parentStatus,jdbcType=INTEGER},
+      </if>
+      <if test="awardType != null">
+        #{awardType,jdbcType=INTEGER},
+      </if>
+      <if test="awardFunds != null">
+        #{awardFunds,jdbcType=VARCHAR},
+      </if>
+      <if test="overDate != null">
+        #{overDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="businessCode != null">
+        #{businessCode,jdbcType=VARCHAR},
+      </if>
+      <if test="awardScale != null">
+        #{awardScale,jdbcType=DECIMAL},
+      </if>
+      <if test="borrowMoney != null">
+        #{borrowMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="fangkuanStatus != null">
+        #{fangkuanStatus,jdbcType=INTEGER},
+      </if>
+      <if test="rongXunFlg != null">
+        #{rongXunFlg,jdbcType=INTEGER},
+      </if>
+      <if test="tzxf != null">
+        #{tzxf,jdbcType=DECIMAL},
+      </if>
+      <if test="tzth != null">
+        #{tzth,jdbcType=DECIMAL},
+      </if>
+      <if test="sgdg != null">
+        #{sgdg,jdbcType=DECIMAL},
+      </if>
+      <if test="baseApr != null">
+        #{baseApr,jdbcType=DECIMAL},
+      </if>
+      <if test="awardApr != null">
+        #{awardApr,jdbcType=DECIMAL},
+      </if>
+      <if test="cgStatus != null">
+        #{cgStatus,jdbcType=CHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="orderList != null">
+        #{orderList,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="borImage != null">
+        #{borImage,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="wanderStages != null">
+        #{wanderStages,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="borrowInfoJson != null">
+        #{borrowInfoJson,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="borImage2 != null">
+        #{borImage2,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="borrowVerifyJson != null">
+        #{borrowVerifyJson,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByCriteria" parameterType="com.ysd.asset.criteria.BorrowCriteria" resultType="java.lang.Long">
+    select count(*) from fy_borrow
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByCriteria" parameterType="map">
+    update fy_borrow
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.maxborrowId != null">
+        maxborrow_id = #{record.maxborrowId,jdbcType=INTEGER},
+      </if>
+      <if test="record.userId != null">
+        user_id = #{record.userId,jdbcType=INTEGER},
+      </if>
+      <if test="record.agencyId != null">
+        agency_id = #{record.agencyId,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null">
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.orderNum != null">
+        order_num = #{record.orderNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.divides != null">
+        divides = #{record.divides,jdbcType=INTEGER},
+      </if>
+      <if test="record.hits != null">
+        hits = #{record.hits,jdbcType=INTEGER},
+      </if>
+      <if test="record.isVouch != null">
+        is_vouch = #{record.isVouch,jdbcType=VARCHAR},
+      </if>
+      <if test="record.type != null">
+        type = #{record.type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.verifyUser != null">
+        verify_user = #{record.verifyUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.verifyTime != null">
+        verify_time = #{record.verifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.verifyRemark != null">
+        verify_remark = #{record.verifyRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.repaymentUser != null">
+        repayment_user = #{record.repaymentUser,jdbcType=INTEGER},
+      </if>
+      <if test="record.forstAccount != null">
+        forst_account = #{record.forstAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.repaymentAccount != null">
+        repayment_account = #{record.repaymentAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.monthlyRepayment != null">
+        monthly_repayment = #{record.monthlyRepayment,jdbcType=VARCHAR},
+      </if>
+      <if test="record.repaymentYesaccount != null">
+        repayment_yesaccount = #{record.repaymentYesaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.repaymentTime != null">
+        repayment_time = #{record.repaymentTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.repamyentRemark != null">
+        repamyent_remark = #{record.repamyentRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.successTime != null">
+        success_time = #{record.successTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.endTime != null">
+        end_time = #{record.endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.paymentAccount != null">
+        payment_account = #{record.paymentAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.eachTime != null">
+        each_time = #{record.eachTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.useReason != null">
+        use_reason = #{record.useReason,jdbcType=VARCHAR},
+      </if>
+      <if test="record.timeLimit != null">
+        time_limit = #{record.timeLimit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.style != null">
+        style = #{record.style,jdbcType=VARCHAR},
+      </if>
+      <if test="record.repaymentPeriod != null">
+        repayment_period = #{record.repaymentPeriod,jdbcType=INTEGER},
+      </if>
+      <if test="record.account != null">
+        account = #{record.account,jdbcType=VARCHAR},
+      </if>
+      <if test="record.accountYes != null">
+        account_yes = #{record.accountYes,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tenderTimes != null">
+        tender_times = #{record.tenderTimes,jdbcType=VARCHAR},
+      </if>
+      <if test="record.apr != null">
+        apr = #{record.apr,jdbcType=DECIMAL},
+      </if>
+      <if test="record.lowestAccount != null">
+        lowest_account = #{record.lowestAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mostAccount != null">
+        most_account = #{record.mostAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.validTime != null">
+        valid_time = #{record.validTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.award != null">
+        award = #{record.award,jdbcType=VARCHAR},
+      </if>
+      <if test="record.depositMoney != null">
+        deposit_money = #{record.depositMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="record.feeType != null">
+        fee_type = #{record.feeType,jdbcType=INTEGER},
+      </if>
+      <if test="record.feeMoney != null">
+        fee_money = #{record.feeMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="record.partAccount != null">
+        part_account = #{record.partAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.funds != null">
+        funds = #{record.funds,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isFalse != null">
+        is_false = #{record.isFalse,jdbcType=VARCHAR},
+      </if>
+      <if test="record.openAccount != null">
+        open_account = #{record.openAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.openBorrow != null">
+        open_borrow = #{record.openBorrow,jdbcType=VARCHAR},
+      </if>
+      <if test="record.openTender != null">
+        open_tender = #{record.openTender,jdbcType=VARCHAR},
+      </if>
+      <if test="record.openCredit != null">
+        open_credit = #{record.openCredit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isDo != null">
+        is_do = #{record.isDo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isMb != null">
+        is_mb = #{record.isMb,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isFast != null">
+        is_fast = #{record.isFast,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isDxb != null">
+        is_dxb = #{record.isDxb,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pwd != null">
+        pwd = #{record.pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isday != null">
+        isday = #{record.isday,jdbcType=VARCHAR},
+      </if>
+      <if test="record.timeLimitDay != null">
+        time_limit_day = #{record.timeLimitDay,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addPersion != null">
+        add_persion = #{record.addPersion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addTime != null">
+        add_time = #{record.addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updatePersion != null">
+        update_persion = #{record.updatePersion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updateTime != null">
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.operatorIp != null">
+        operator_ip = #{record.operatorIp,jdbcType=VARCHAR},
+      </if>
+      <if test="record.schedule != null">
+        schedule = #{record.schedule,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createDate != null">
+        create_date = #{record.createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifyDate != null">
+        modify_date = #{record.modifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.balance != null">
+        balance = #{record.balance,jdbcType=VARCHAR},
+      </if>
+      <if test="record.borImageFirst != null">
+        bor_image_first = #{record.borImageFirst,jdbcType=VARCHAR},
+      </if>
+      <if test="record.borStages != null">
+        bor_stages = #{record.borStages,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wanderTenderTimes != null">
+        wander_tender_times = #{record.wanderTenderTimes,jdbcType=INTEGER},
+      </if>
+      <if test="record.wanderPieceSize != null">
+        wander_piece_size = #{record.wanderPieceSize,jdbcType=INTEGER},
+      </if>
+      <if test="record.wanderPieceMoney != null">
+        wander_piece_money = #{record.wanderPieceMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="record.wanderRedeemTimes != null">
+        wander_redeem_times = #{record.wanderRedeemTimes,jdbcType=INTEGER},
+      </if>
+      <if test="record.finalRepayDate != null">
+        final_repay_date = #{record.finalRepayDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.nextRepayDate != null">
+        next_repay_date = #{record.nextRepayDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.bonus != null">
+        bonus = #{record.bonus,jdbcType=DECIMAL},
+      </if>
+      <if test="record.interestTotal != null">
+        interest_total = #{record.interestTotal,jdbcType=DECIMAL},
+      </if>
+      <if test="record.repayCapital != null">
+        repay_capital = #{record.repayCapital,jdbcType=DECIMAL},
+      </if>
+      <if test="record.repayInterest != null">
+        repay_interest = #{record.repayInterest,jdbcType=DECIMAL},
+      </if>
+      <if test="record.payedCapital != null">
+        payed_capital = #{record.payedCapital,jdbcType=DECIMAL},
+      </if>
+      <if test="record.payedInterest != null">
+        payed_interest = #{record.payedInterest,jdbcType=DECIMAL},
+      </if>
+      <if test="record.showTop != null">
+        show_top = #{record.showTop,jdbcType=INTEGER},
+      </if>
+      <if test="record.showSort != null">
+        show_sort = #{record.showSort,jdbcType=INTEGER},
+      </if>
+      <if test="record.finalRateYear != null">
+        final_rate_year = #{record.finalRateYear,jdbcType=DECIMAL},
+      </if>
+      <if test="record.autoTenderStatus != null">
+        auto_tender_status = #{record.autoTenderStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.autoTenderRepayWay != null">
+        auto_tender_repay_way = #{record.autoTenderRepayWay,jdbcType=INTEGER},
+      </if>
+      <if test="record.continueAwardRate != null">
+        continue_award_rate = #{record.continueAwardRate,jdbcType=DECIMAL},
+      </if>
+      <if test="record.varyYearRate != null">
+        vary_year_rate = #{record.varyYearRate,jdbcType=DECIMAL},
+      </if>
+      <if test="record.varyMonthLimit != null">
+        vary_month_limit = #{record.varyMonthLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="record.parentFlg != null">
+        parent_flg = #{record.parentFlg,jdbcType=INTEGER},
+      </if>
+      <if test="record.parentId != null">
+        parent_id = #{record.parentId,jdbcType=INTEGER},
+      </if>
+      <if test="record.parentMoney != null">
+        parent_money = #{record.parentMoney,jdbcType=INTEGER},
+      </if>
+      <if test="record.parentAccount != null">
+        parent_account = #{record.parentAccount,jdbcType=INTEGER},
+      </if>
+      <if test="record.parentStatus != null">
+        parent_status = #{record.parentStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.awardType != null">
+        award_type = #{record.awardType,jdbcType=INTEGER},
+      </if>
+      <if test="record.awardFunds != null">
+        award_funds = #{record.awardFunds,jdbcType=VARCHAR},
+      </if>
+      <if test="record.overDate != null">
+        over_date = #{record.overDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.businessCode != null">
+        business_code = #{record.businessCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.awardScale != null">
+        award_scale = #{record.awardScale,jdbcType=DECIMAL},
+      </if>
+      <if test="record.borrowMoney != null">
+        borrow_money = #{record.borrowMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="record.fangkuanStatus != null">
+        fangkuan_status = #{record.fangkuanStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.rongXunFlg != null">
+        rong_xun_flg = #{record.rongXunFlg,jdbcType=INTEGER},
+      </if>
+      <if test="record.tzxf != null">
+        tzxf = #{record.tzxf,jdbcType=DECIMAL},
+      </if>
+      <if test="record.tzth != null">
+        tzth = #{record.tzth,jdbcType=DECIMAL},
+      </if>
+      <if test="record.sgdg != null">
+        sgdg = #{record.sgdg,jdbcType=DECIMAL},
+      </if>
+      <if test="record.baseApr != null">
+        base_apr = #{record.baseApr,jdbcType=DECIMAL},
+      </if>
+      <if test="record.awardApr != null">
+        award_apr = #{record.awardApr,jdbcType=DECIMAL},
+      </if>
+      <if test="record.cgStatus != null">
+        cg_status = #{record.cgStatus,jdbcType=CHAR},
+      </if>
+      <if test="record.content != null">
+        content = #{record.content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.orderList != null">
+        order_list = #{record.orderList,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.borImage != null">
+        bor_image = #{record.borImage,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.wanderStages != null">
+        wander_stages = #{record.wanderStages,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.borrowInfoJson != null">
+        borrow_info_json = #{record.borrowInfoJson,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.borImage2 != null">
+        bor_image2 = #{record.borImage2,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.borrowVerifyJson != null">
+        borrow_verify_json = #{record.borrowVerifyJson,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateById" parameterType="com.ysd.asset.entity.Borrow">
+    update fy_borrow
+    <set>
+      <if test="maxborrowId != null">
+        maxborrow_id = #{maxborrowId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="agencyId != null">
+        agency_id = #{agencyId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="orderNum != null">
+        order_num = #{orderNum,jdbcType=INTEGER},
+      </if>
+      <if test="divides != null">
+        divides = #{divides,jdbcType=INTEGER},
+      </if>
+      <if test="hits != null">
+        hits = #{hits,jdbcType=INTEGER},
+      </if>
+      <if test="isVouch != null">
+        is_vouch = #{isVouch,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="verifyUser != null">
+        verify_user = #{verifyUser,jdbcType=VARCHAR},
+      </if>
+      <if test="verifyTime != null">
+        verify_time = #{verifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="verifyRemark != null">
+        verify_remark = #{verifyRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="repaymentUser != null">
+        repayment_user = #{repaymentUser,jdbcType=INTEGER},
+      </if>
+      <if test="forstAccount != null">
+        forst_account = #{forstAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="repaymentAccount != null">
+        repayment_account = #{repaymentAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="monthlyRepayment != null">
+        monthly_repayment = #{monthlyRepayment,jdbcType=VARCHAR},
+      </if>
+      <if test="repaymentYesaccount != null">
+        repayment_yesaccount = #{repaymentYesaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="repaymentTime != null">
+        repayment_time = #{repaymentTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="repamyentRemark != null">
+        repamyent_remark = #{repamyentRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="successTime != null">
+        success_time = #{successTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="paymentAccount != null">
+        payment_account = #{paymentAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="eachTime != null">
+        each_time = #{eachTime,jdbcType=VARCHAR},
+      </if>
+      <if test="useReason != null">
+        use_reason = #{useReason,jdbcType=VARCHAR},
+      </if>
+      <if test="timeLimit != null">
+        time_limit = #{timeLimit,jdbcType=VARCHAR},
+      </if>
+      <if test="style != null">
+        style = #{style,jdbcType=VARCHAR},
+      </if>
+      <if test="repaymentPeriod != null">
+        repayment_period = #{repaymentPeriod,jdbcType=INTEGER},
+      </if>
+      <if test="account != null">
+        account = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="accountYes != null">
+        account_yes = #{accountYes,jdbcType=VARCHAR},
+      </if>
+      <if test="tenderTimes != null">
+        tender_times = #{tenderTimes,jdbcType=VARCHAR},
+      </if>
+      <if test="apr != null">
+        apr = #{apr,jdbcType=DECIMAL},
+      </if>
+      <if test="lowestAccount != null">
+        lowest_account = #{lowestAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="mostAccount != null">
+        most_account = #{mostAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="validTime != null">
+        valid_time = #{validTime,jdbcType=VARCHAR},
+      </if>
+      <if test="award != null">
+        award = #{award,jdbcType=VARCHAR},
+      </if>
+      <if test="depositMoney != null">
+        deposit_money = #{depositMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="feeType != null">
+        fee_type = #{feeType,jdbcType=INTEGER},
+      </if>
+      <if test="feeMoney != null">
+        fee_money = #{feeMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="partAccount != null">
+        part_account = #{partAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="funds != null">
+        funds = #{funds,jdbcType=VARCHAR},
+      </if>
+      <if test="isFalse != null">
+        is_false = #{isFalse,jdbcType=VARCHAR},
+      </if>
+      <if test="openAccount != null">
+        open_account = #{openAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="openBorrow != null">
+        open_borrow = #{openBorrow,jdbcType=VARCHAR},
+      </if>
+      <if test="openTender != null">
+        open_tender = #{openTender,jdbcType=VARCHAR},
+      </if>
+      <if test="openCredit != null">
+        open_credit = #{openCredit,jdbcType=VARCHAR},
+      </if>
+      <if test="isDo != null">
+        is_do = #{isDo,jdbcType=VARCHAR},
+      </if>
+      <if test="isMb != null">
+        is_mb = #{isMb,jdbcType=VARCHAR},
+      </if>
+      <if test="isFast != null">
+        is_fast = #{isFast,jdbcType=VARCHAR},
+      </if>
+      <if test="isDxb != null">
+        is_dxb = #{isDxb,jdbcType=VARCHAR},
+      </if>
+      <if test="pwd != null">
+        pwd = #{pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="isday != null">
+        isday = #{isday,jdbcType=VARCHAR},
+      </if>
+      <if test="timeLimitDay != null">
+        time_limit_day = #{timeLimitDay,jdbcType=VARCHAR},
+      </if>
+      <if test="addPersion != null">
+        add_persion = #{addPersion,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null">
+        add_time = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatePersion != null">
+        update_persion = #{updatePersion,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operatorIp != null">
+        operator_ip = #{operatorIp,jdbcType=VARCHAR},
+      </if>
+      <if test="schedule != null">
+        schedule = #{schedule,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyDate != null">
+        modify_date = #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="balance != null">
+        balance = #{balance,jdbcType=VARCHAR},
+      </if>
+      <if test="borImageFirst != null">
+        bor_image_first = #{borImageFirst,jdbcType=VARCHAR},
+      </if>
+      <if test="borStages != null">
+        bor_stages = #{borStages,jdbcType=VARCHAR},
+      </if>
+      <if test="wanderTenderTimes != null">
+        wander_tender_times = #{wanderTenderTimes,jdbcType=INTEGER},
+      </if>
+      <if test="wanderPieceSize != null">
+        wander_piece_size = #{wanderPieceSize,jdbcType=INTEGER},
+      </if>
+      <if test="wanderPieceMoney != null">
+        wander_piece_money = #{wanderPieceMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="wanderRedeemTimes != null">
+        wander_redeem_times = #{wanderRedeemTimes,jdbcType=INTEGER},
+      </if>
+      <if test="finalRepayDate != null">
+        final_repay_date = #{finalRepayDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nextRepayDate != null">
+        next_repay_date = #{nextRepayDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bonus != null">
+        bonus = #{bonus,jdbcType=DECIMAL},
+      </if>
+      <if test="interestTotal != null">
+        interest_total = #{interestTotal,jdbcType=DECIMAL},
+      </if>
+      <if test="repayCapital != null">
+        repay_capital = #{repayCapital,jdbcType=DECIMAL},
+      </if>
+      <if test="repayInterest != null">
+        repay_interest = #{repayInterest,jdbcType=DECIMAL},
+      </if>
+      <if test="payedCapital != null">
+        payed_capital = #{payedCapital,jdbcType=DECIMAL},
+      </if>
+      <if test="payedInterest != null">
+        payed_interest = #{payedInterest,jdbcType=DECIMAL},
+      </if>
+      <if test="showTop != null">
+        show_top = #{showTop,jdbcType=INTEGER},
+      </if>
+      <if test="showSort != null">
+        show_sort = #{showSort,jdbcType=INTEGER},
+      </if>
+      <if test="finalRateYear != null">
+        final_rate_year = #{finalRateYear,jdbcType=DECIMAL},
+      </if>
+      <if test="autoTenderStatus != null">
+        auto_tender_status = #{autoTenderStatus,jdbcType=INTEGER},
+      </if>
+      <if test="autoTenderRepayWay != null">
+        auto_tender_repay_way = #{autoTenderRepayWay,jdbcType=INTEGER},
+      </if>
+      <if test="continueAwardRate != null">
+        continue_award_rate = #{continueAwardRate,jdbcType=DECIMAL},
+      </if>
+      <if test="varyYearRate != null">
+        vary_year_rate = #{varyYearRate,jdbcType=DECIMAL},
+      </if>
+      <if test="varyMonthLimit != null">
+        vary_month_limit = #{varyMonthLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="parentFlg != null">
+        parent_flg = #{parentFlg,jdbcType=INTEGER},
+      </if>
+      <if test="parentId != null">
+        parent_id = #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="parentMoney != null">
+        parent_money = #{parentMoney,jdbcType=INTEGER},
+      </if>
+      <if test="parentAccount != null">
+        parent_account = #{parentAccount,jdbcType=INTEGER},
+      </if>
+      <if test="parentStatus != null">
+        parent_status = #{parentStatus,jdbcType=INTEGER},
+      </if>
+      <if test="awardType != null">
+        award_type = #{awardType,jdbcType=INTEGER},
+      </if>
+      <if test="awardFunds != null">
+        award_funds = #{awardFunds,jdbcType=VARCHAR},
+      </if>
+      <if test="overDate != null">
+        over_date = #{overDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="businessCode != null">
+        business_code = #{businessCode,jdbcType=VARCHAR},
+      </if>
+      <if test="awardScale != null">
+        award_scale = #{awardScale,jdbcType=DECIMAL},
+      </if>
+      <if test="borrowMoney != null">
+        borrow_money = #{borrowMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="fangkuanStatus != null">
+        fangkuan_status = #{fangkuanStatus,jdbcType=INTEGER},
+      </if>
+      <if test="rongXunFlg != null">
+        rong_xun_flg = #{rongXunFlg,jdbcType=INTEGER},
+      </if>
+      <if test="tzxf != null">
+        tzxf = #{tzxf,jdbcType=DECIMAL},
+      </if>
+      <if test="tzth != null">
+        tzth = #{tzth,jdbcType=DECIMAL},
+      </if>
+      <if test="sgdg != null">
+        sgdg = #{sgdg,jdbcType=DECIMAL},
+      </if>
+      <if test="baseApr != null">
+        base_apr = #{baseApr,jdbcType=DECIMAL},
+      </if>
+      <if test="awardApr != null">
+        award_apr = #{awardApr,jdbcType=DECIMAL},
+      </if>
+      <if test="cgStatus != null">
+        cg_status = #{cgStatus,jdbcType=CHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="orderList != null">
+        order_list = #{orderList,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="borImage != null">
+        bor_image = #{borImage,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="wanderStages != null">
+        wander_stages = #{wanderStages,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="borrowInfoJson != null">
+        borrow_info_json = #{borrowInfoJson,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="borImage2 != null">
+        bor_image2 = #{borImage2,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="borrowVerifyJson != null">
+        borrow_verify_json = #{borrowVerifyJson,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

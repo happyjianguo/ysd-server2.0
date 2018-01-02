@@ -1,0 +1,699 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ysd.user.dao.AgencyReadyMapper">
+  <resultMap id="BaseResultMap" type="com.ysd.user.entity.AgencyReady">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="modify_date" jdbcType="TIMESTAMP" property="modifyDate" />
+    <result column="company_name" jdbcType="VARCHAR" property="companyName" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="area" jdbcType="VARCHAR" property="area" />
+    <result column="area_store" jdbcType="VARCHAR" property="areaStore" />
+    <result column="contact_phone" jdbcType="VARCHAR" property="contactPhone" />
+    <result column="contact_address" jdbcType="VARCHAR" property="contactAddress" />
+    <result column="uemail" jdbcType="VARCHAR" property="uemail" />
+    <result column="linkman" jdbcType="VARCHAR" property="linkman" />
+    <result column="linkman_mobile" jdbcType="VARCHAR" property="linkmanMobile" />
+    <result column="service_promise" jdbcType="VARCHAR" property="servicePromise" />
+    <result column="main_business" jdbcType="VARCHAR" property="mainBusiness" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="urealname" jdbcType="VARCHAR" property="urealname" />
+    <result column="card_pic1" jdbcType="VARCHAR" property="cardPic1" />
+    <result column="card_pic2" jdbcType="VARCHAR" property="cardPic2" />
+    <result column="private_charter" jdbcType="VARCHAR" property="privateCharter" />
+    <result column="private_charter_img" jdbcType="VARCHAR" property="privateCharterImg" />
+    <result column="tax_registration" jdbcType="VARCHAR" property="taxRegistration" />
+    <result column="private_tax_img" jdbcType="VARCHAR" property="privateTaxImg" />
+    <result column="organization" jdbcType="VARCHAR" property="organization" />
+    <result column="private_organization_img" jdbcType="VARCHAR" property="privateOrganizationImg" />
+    <result column="account_licence_img" jdbcType="VARCHAR" property="accountLicenceImg" />
+    <result column="establish_date" jdbcType="TIMESTAMP" property="establishDate" />
+    <result column="business_start" jdbcType="TIMESTAMP" property="businessStart" />
+    <result column="business_end" jdbcType="TIMESTAMP" property="businessEnd" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="capital" jdbcType="DECIMAL" property="capital" />
+    <result column="scope" jdbcType="VARCHAR" property="scope" />
+    <result column="uusername" jdbcType="VARCHAR" property="uusername" />
+    <result column="upassword" jdbcType="VARCHAR" property="upassword" />
+    <result column="upaypassword" jdbcType="VARCHAR" property="upaypassword" />
+    <result column="urandom" jdbcType="VARCHAR" property="urandom" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="agencydbid" jdbcType="BIGINT" property="agencydbid" />
+    <result column="taste_rule" jdbcType="INTEGER" property="tasteRule" />
+    <result column="flow_rule" jdbcType="INTEGER" property="flowRule" />
+    <result column="credit_rule" jdbcType="INTEGER" property="creditRule" />
+    <result column="pledge_rule" jdbcType="INTEGER" property="pledgeRule" />
+    <result column="sign_image" jdbcType="VARCHAR" property="signImage" />
+    <result column="taste_money" jdbcType="DECIMAL" property="tasteMoney" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, create_date, modify_date, company_name, province, city, area, area_store, contact_phone, 
+    contact_address, uemail, linkman, linkman_mobile, service_promise, main_business, 
+    remark, urealname, card_pic1, card_pic2, private_charter, private_charter_img, tax_registration, 
+    private_tax_img, organization, private_organization_img, account_licence_img, establish_date, 
+    business_start, business_end, address, capital, scope, uusername, upassword, upaypassword, 
+    urandom, status, agencydbid, taste_rule, flow_rule, credit_rule, pledge_rule, sign_image, 
+    taste_money
+  </sql>
+  <select id="selectByCriteria" parameterType="com.ysd.user.criteria.AgencyReadyCriteria" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from fy_agency_ready
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from fy_agency_ready
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Long">
+    delete from fy_agency_ready
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByCriteria" parameterType="com.ysd.user.criteria.AgencyReadyCriteria">
+    delete from fy_agency_ready
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.ysd.user.entity.AgencyReady" useGeneratedKeys="true">
+    insert into fy_agency_ready
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="modifyDate != null">
+        modify_date,
+      </if>
+      <if test="companyName != null">
+        company_name,
+      </if>
+      <if test="province != null">
+        province,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="area != null">
+        area,
+      </if>
+      <if test="areaStore != null">
+        area_store,
+      </if>
+      <if test="contactPhone != null">
+        contact_phone,
+      </if>
+      <if test="contactAddress != null">
+        contact_address,
+      </if>
+      <if test="uemail != null">
+        uemail,
+      </if>
+      <if test="linkman != null">
+        linkman,
+      </if>
+      <if test="linkmanMobile != null">
+        linkman_mobile,
+      </if>
+      <if test="servicePromise != null">
+        service_promise,
+      </if>
+      <if test="mainBusiness != null">
+        main_business,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="urealname != null">
+        urealname,
+      </if>
+      <if test="cardPic1 != null">
+        card_pic1,
+      </if>
+      <if test="cardPic2 != null">
+        card_pic2,
+      </if>
+      <if test="privateCharter != null">
+        private_charter,
+      </if>
+      <if test="privateCharterImg != null">
+        private_charter_img,
+      </if>
+      <if test="taxRegistration != null">
+        tax_registration,
+      </if>
+      <if test="privateTaxImg != null">
+        private_tax_img,
+      </if>
+      <if test="organization != null">
+        organization,
+      </if>
+      <if test="privateOrganizationImg != null">
+        private_organization_img,
+      </if>
+      <if test="accountLicenceImg != null">
+        account_licence_img,
+      </if>
+      <if test="establishDate != null">
+        establish_date,
+      </if>
+      <if test="businessStart != null">
+        business_start,
+      </if>
+      <if test="businessEnd != null">
+        business_end,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="capital != null">
+        capital,
+      </if>
+      <if test="scope != null">
+        scope,
+      </if>
+      <if test="uusername != null">
+        uusername,
+      </if>
+      <if test="upassword != null">
+        upassword,
+      </if>
+      <if test="upaypassword != null">
+        upaypassword,
+      </if>
+      <if test="urandom != null">
+        urandom,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="agencydbid != null">
+        agencydbid,
+      </if>
+      <if test="tasteRule != null">
+        taste_rule,
+      </if>
+      <if test="flowRule != null">
+        flow_rule,
+      </if>
+      <if test="creditRule != null">
+        credit_rule,
+      </if>
+      <if test="pledgeRule != null">
+        pledge_rule,
+      </if>
+      <if test="signImage != null">
+        sign_image,
+      </if>
+      <if test="tasteMoney != null">
+        taste_money,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyDate != null">
+        #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="companyName != null">
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="areaStore != null">
+        #{areaStore,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null">
+        #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="contactAddress != null">
+        #{contactAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="uemail != null">
+        #{uemail,jdbcType=VARCHAR},
+      </if>
+      <if test="linkman != null">
+        #{linkman,jdbcType=VARCHAR},
+      </if>
+      <if test="linkmanMobile != null">
+        #{linkmanMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="servicePromise != null">
+        #{servicePromise,jdbcType=VARCHAR},
+      </if>
+      <if test="mainBusiness != null">
+        #{mainBusiness,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="urealname != null">
+        #{urealname,jdbcType=VARCHAR},
+      </if>
+      <if test="cardPic1 != null">
+        #{cardPic1,jdbcType=VARCHAR},
+      </if>
+      <if test="cardPic2 != null">
+        #{cardPic2,jdbcType=VARCHAR},
+      </if>
+      <if test="privateCharter != null">
+        #{privateCharter,jdbcType=VARCHAR},
+      </if>
+      <if test="privateCharterImg != null">
+        #{privateCharterImg,jdbcType=VARCHAR},
+      </if>
+      <if test="taxRegistration != null">
+        #{taxRegistration,jdbcType=VARCHAR},
+      </if>
+      <if test="privateTaxImg != null">
+        #{privateTaxImg,jdbcType=VARCHAR},
+      </if>
+      <if test="organization != null">
+        #{organization,jdbcType=VARCHAR},
+      </if>
+      <if test="privateOrganizationImg != null">
+        #{privateOrganizationImg,jdbcType=VARCHAR},
+      </if>
+      <if test="accountLicenceImg != null">
+        #{accountLicenceImg,jdbcType=VARCHAR},
+      </if>
+      <if test="establishDate != null">
+        #{establishDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="businessStart != null">
+        #{businessStart,jdbcType=TIMESTAMP},
+      </if>
+      <if test="businessEnd != null">
+        #{businessEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="capital != null">
+        #{capital,jdbcType=DECIMAL},
+      </if>
+      <if test="scope != null">
+        #{scope,jdbcType=VARCHAR},
+      </if>
+      <if test="uusername != null">
+        #{uusername,jdbcType=VARCHAR},
+      </if>
+      <if test="upassword != null">
+        #{upassword,jdbcType=VARCHAR},
+      </if>
+      <if test="upaypassword != null">
+        #{upaypassword,jdbcType=VARCHAR},
+      </if>
+      <if test="urandom != null">
+        #{urandom,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="agencydbid != null">
+        #{agencydbid,jdbcType=BIGINT},
+      </if>
+      <if test="tasteRule != null">
+        #{tasteRule,jdbcType=INTEGER},
+      </if>
+      <if test="flowRule != null">
+        #{flowRule,jdbcType=INTEGER},
+      </if>
+      <if test="creditRule != null">
+        #{creditRule,jdbcType=INTEGER},
+      </if>
+      <if test="pledgeRule != null">
+        #{pledgeRule,jdbcType=INTEGER},
+      </if>
+      <if test="signImage != null">
+        #{signImage,jdbcType=VARCHAR},
+      </if>
+      <if test="tasteMoney != null">
+        #{tasteMoney,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByCriteria" parameterType="com.ysd.user.criteria.AgencyReadyCriteria" resultType="java.lang.Long">
+    select count(*) from fy_agency_ready
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByCriteria" parameterType="map">
+    update fy_agency_ready
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.createDate != null">
+        create_date = #{record.createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifyDate != null">
+        modify_date = #{record.modifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.companyName != null">
+        company_name = #{record.companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.province != null">
+        province = #{record.province,jdbcType=VARCHAR},
+      </if>
+      <if test="record.city != null">
+        city = #{record.city,jdbcType=VARCHAR},
+      </if>
+      <if test="record.area != null">
+        area = #{record.area,jdbcType=VARCHAR},
+      </if>
+      <if test="record.areaStore != null">
+        area_store = #{record.areaStore,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contactPhone != null">
+        contact_phone = #{record.contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contactAddress != null">
+        contact_address = #{record.contactAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uemail != null">
+        uemail = #{record.uemail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.linkman != null">
+        linkman = #{record.linkman,jdbcType=VARCHAR},
+      </if>
+      <if test="record.linkmanMobile != null">
+        linkman_mobile = #{record.linkmanMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="record.servicePromise != null">
+        service_promise = #{record.servicePromise,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mainBusiness != null">
+        main_business = #{record.mainBusiness,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark != null">
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.urealname != null">
+        urealname = #{record.urealname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cardPic1 != null">
+        card_pic1 = #{record.cardPic1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cardPic2 != null">
+        card_pic2 = #{record.cardPic2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.privateCharter != null">
+        private_charter = #{record.privateCharter,jdbcType=VARCHAR},
+      </if>
+      <if test="record.privateCharterImg != null">
+        private_charter_img = #{record.privateCharterImg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.taxRegistration != null">
+        tax_registration = #{record.taxRegistration,jdbcType=VARCHAR},
+      </if>
+      <if test="record.privateTaxImg != null">
+        private_tax_img = #{record.privateTaxImg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.organization != null">
+        organization = #{record.organization,jdbcType=VARCHAR},
+      </if>
+      <if test="record.privateOrganizationImg != null">
+        private_organization_img = #{record.privateOrganizationImg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.accountLicenceImg != null">
+        account_licence_img = #{record.accountLicenceImg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.establishDate != null">
+        establish_date = #{record.establishDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.businessStart != null">
+        business_start = #{record.businessStart,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.businessEnd != null">
+        business_end = #{record.businessEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.address != null">
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.capital != null">
+        capital = #{record.capital,jdbcType=DECIMAL},
+      </if>
+      <if test="record.scope != null">
+        scope = #{record.scope,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uusername != null">
+        uusername = #{record.uusername,jdbcType=VARCHAR},
+      </if>
+      <if test="record.upassword != null">
+        upassword = #{record.upassword,jdbcType=VARCHAR},
+      </if>
+      <if test="record.upaypassword != null">
+        upaypassword = #{record.upaypassword,jdbcType=VARCHAR},
+      </if>
+      <if test="record.urandom != null">
+        urandom = #{record.urandom,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.agencydbid != null">
+        agencydbid = #{record.agencydbid,jdbcType=BIGINT},
+      </if>
+      <if test="record.tasteRule != null">
+        taste_rule = #{record.tasteRule,jdbcType=INTEGER},
+      </if>
+      <if test="record.flowRule != null">
+        flow_rule = #{record.flowRule,jdbcType=INTEGER},
+      </if>
+      <if test="record.creditRule != null">
+        credit_rule = #{record.creditRule,jdbcType=INTEGER},
+      </if>
+      <if test="record.pledgeRule != null">
+        pledge_rule = #{record.pledgeRule,jdbcType=INTEGER},
+      </if>
+      <if test="record.signImage != null">
+        sign_image = #{record.signImage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tasteMoney != null">
+        taste_money = #{record.tasteMoney,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateById" parameterType="com.ysd.user.entity.AgencyReady">
+    update fy_agency_ready
+    <set>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyDate != null">
+        modify_date = #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="companyName != null">
+        company_name = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        area = #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="areaStore != null">
+        area_store = #{areaStore,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null">
+        contact_phone = #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="contactAddress != null">
+        contact_address = #{contactAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="uemail != null">
+        uemail = #{uemail,jdbcType=VARCHAR},
+      </if>
+      <if test="linkman != null">
+        linkman = #{linkman,jdbcType=VARCHAR},
+      </if>
+      <if test="linkmanMobile != null">
+        linkman_mobile = #{linkmanMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="servicePromise != null">
+        service_promise = #{servicePromise,jdbcType=VARCHAR},
+      </if>
+      <if test="mainBusiness != null">
+        main_business = #{mainBusiness,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="urealname != null">
+        urealname = #{urealname,jdbcType=VARCHAR},
+      </if>
+      <if test="cardPic1 != null">
+        card_pic1 = #{cardPic1,jdbcType=VARCHAR},
+      </if>
+      <if test="cardPic2 != null">
+        card_pic2 = #{cardPic2,jdbcType=VARCHAR},
+      </if>
+      <if test="privateCharter != null">
+        private_charter = #{privateCharter,jdbcType=VARCHAR},
+      </if>
+      <if test="privateCharterImg != null">
+        private_charter_img = #{privateCharterImg,jdbcType=VARCHAR},
+      </if>
+      <if test="taxRegistration != null">
+        tax_registration = #{taxRegistration,jdbcType=VARCHAR},
+      </if>
+      <if test="privateTaxImg != null">
+        private_tax_img = #{privateTaxImg,jdbcType=VARCHAR},
+      </if>
+      <if test="organization != null">
+        organization = #{organization,jdbcType=VARCHAR},
+      </if>
+      <if test="privateOrganizationImg != null">
+        private_organization_img = #{privateOrganizationImg,jdbcType=VARCHAR},
+      </if>
+      <if test="accountLicenceImg != null">
+        account_licence_img = #{accountLicenceImg,jdbcType=VARCHAR},
+      </if>
+      <if test="establishDate != null">
+        establish_date = #{establishDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="businessStart != null">
+        business_start = #{businessStart,jdbcType=TIMESTAMP},
+      </if>
+      <if test="businessEnd != null">
+        business_end = #{businessEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="capital != null">
+        capital = #{capital,jdbcType=DECIMAL},
+      </if>
+      <if test="scope != null">
+        scope = #{scope,jdbcType=VARCHAR},
+      </if>
+      <if test="uusername != null">
+        uusername = #{uusername,jdbcType=VARCHAR},
+      </if>
+      <if test="upassword != null">
+        upassword = #{upassword,jdbcType=VARCHAR},
+      </if>
+      <if test="upaypassword != null">
+        upaypassword = #{upaypassword,jdbcType=VARCHAR},
+      </if>
+      <if test="urandom != null">
+        urandom = #{urandom,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="agencydbid != null">
+        agencydbid = #{agencydbid,jdbcType=BIGINT},
+      </if>
+      <if test="tasteRule != null">
+        taste_rule = #{tasteRule,jdbcType=INTEGER},
+      </if>
+      <if test="flowRule != null">
+        flow_rule = #{flowRule,jdbcType=INTEGER},
+      </if>
+      <if test="creditRule != null">
+        credit_rule = #{creditRule,jdbcType=INTEGER},
+      </if>
+      <if test="pledgeRule != null">
+        pledge_rule = #{pledgeRule,jdbcType=INTEGER},
+      </if>
+      <if test="signImage != null">
+        sign_image = #{signImage,jdbcType=VARCHAR},
+      </if>
+      <if test="tasteMoney != null">
+        taste_money = #{tasteMoney,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

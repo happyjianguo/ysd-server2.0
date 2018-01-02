@@ -1,0 +1,52 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.ysd</groupId>
+        <artifactId>ysd-parent</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../ysd-parent</relativePath>
+    </parent>
+
+    <groupId>com.ysd.user</groupId>
+    <artifactId>ysd-user</artifactId>
+    <packaging>jar</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <name>ysd-user</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.ysd.base</groupId>
+            <artifactId>ysd-base</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <configuration>
+                    <configurationFile>src/test/resources/generator/generator-config.xml</configurationFile>
+                    <overwrite>false</overwrite>
+                </configuration>
+                <version>1.3.5</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.epoint.plugin</groupId>
+                        <artifactId>epoint-maven-plugin</artifactId>
+                        <version>1.0-SNAPSHOT</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

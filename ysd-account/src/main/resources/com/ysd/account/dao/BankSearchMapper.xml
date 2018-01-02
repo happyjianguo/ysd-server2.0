@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ysd.account.dao.BankSearchMapper">
+  <resultMap id="BaseResultMap" type="com.ysd.account.entity.BankSearch">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="search_type" jdbcType="CHAR" property="searchType" />
+    <result column="order_id" jdbcType="BIGINT" property="orderId" />
+    <result column="bank_order_id" jdbcType="VARCHAR" property="bankOrderId" />
+    <result column="retry_num" jdbcType="TINYINT" property="retryNum" />
+    <result column="status" jdbcType="CHAR" property="status" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="modify_date" jdbcType="TIMESTAMP" property="modifyDate" />
+    <result column="mtp_buy_product" jdbcType="VARCHAR" property="mtpBuyProduct" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, search_type, order_id, bank_order_id, retry_num, status, create_date, modify_date, mtp_buy_product
+  </sql>
+  <select id="selectByCriteria" parameterType="com.ysd.account.criteria.BankSearchCriteria" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from fy_bank_search
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from fy_bank_search
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Long">
+    delete from fy_bank_search
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByCriteria" parameterType="com.ysd.account.criteria.BankSearchCriteria">
+    delete from fy_bank_search
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.ysd.account.entity.BankSearch" useGeneratedKeys="true">
+    insert into fy_bank_search
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="searchType != null">
+        search_type,
+      </if>
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="bankOrderId != null">
+        bank_order_id,
+      </if>
+      <if test="retryNum != null">
+        retry_num,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="modifyDate != null">
+        modify_date,
+      </if>
+
+      <if test="mtpBuyProduct != null">
+            mtp_buy_product,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="searchType != null">
+        #{searchType,jdbcType=CHAR},
+      </if>
+      <if test="orderId != null">
+        #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="bankOrderId != null">
+        #{bankOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="retryNum != null">
+        #{retryNum,jdbcType=TINYINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyDate != null">
+        #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+        <if test="mtpBuyProduct != null">
+            #{mtpBuyProduct,jdbcType=VARCHAR},
+        </if>
+    </trim>
+  </insert>
+  <select id="countByCriteria" parameterType="com.ysd.account.criteria.BankSearchCriteria" resultType="java.lang.Long">
+    select count(*) from fy_bank_search
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByCriteria" parameterType="map">
+    update fy_bank_search
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.searchType != null">
+        search_type = #{record.searchType,jdbcType=CHAR},
+      </if>
+      <if test="record.orderId != null">
+        order_id = #{record.orderId,jdbcType=BIGINT},
+      </if>
+      <if test="record.bankOrderId != null">
+        bank_order_id = #{record.bankOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.retryNum != null">
+        retry_num = #{record.retryNum,jdbcType=TINYINT},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=CHAR},
+      </if>
+      <if test="record.createDate != null">
+        create_date = #{record.createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifyDate != null">
+        modify_date = #{record.modifyDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateById" parameterType="com.ysd.account.entity.BankSearch">
+    update fy_bank_search
+    <set>
+      <if test="searchType != null">
+        search_type = #{searchType,jdbcType=CHAR},
+      </if>
+      <if test="orderId != null">
+        order_id = #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="bankOrderId != null">
+        bank_order_id = #{bankOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="retryNum != null">
+        retry_num = #{retryNum,jdbcType=TINYINT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=CHAR},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyDate != null">
+        modify_date = #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+
+
+  <select id="selectRechargeNotEnd"  resultMap="BaseResultMap">
+    select * from fy_bank_search
+      where status ='0' and search_type='1' and 3>retry_num limit 5
+  </select>
+
+  <select id="selectCashNotEnd"  resultMap="BaseResultMap">
+    select * from fy_bank_search
+    where status ='0' and search_type='2' and 3>retry_num limit 5
+  </select>
+
+</mapper>

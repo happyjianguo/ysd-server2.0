@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<title>渤海银行修改绑定银行卡页面</title>
+</head>
+<body>
+    <div align="center">渤海银行修改绑定银行卡页面跳转中，请不要关闭页面...</div>
+	<form action="${cbhbSubmitUrl!}" method="post" id="frm1" style="display: none;">	
+		<input type="hidden" name="char_set" value="${charSet!}" />       	         
+		<input type="hidden" name="partner_id" value="${partnerId!}" />
+		<input type="hidden" name="version_no" value="${versionNo!}" />
+		<input type="hidden" name="biz_type" value="${bizType!}" />
+		<input type="hidden" name="sign_type" value="${signType!}" />
+		<input type="hidden" name="MerBillNo" value="${merBillNo!}" />
+		<input type="hidden" name="PlaCustId" value="${plaCustId!}" />
+		<input type="hidden" name="PageReturnUrl" value="${pageReturnUrl!}" />
+		<input type="hidden" name="BgRetUrl" value="${bgRetUrl!}" />						
+		<input type="hidden" name="MerPriv" value="${merPriv!}" />
+		<input type="hidden" name="mac" value="${mac!}" />
+	</form>
+	<script language="javascript">
+		document.getElementById("frm1").submit();
+	</script>
+</body>
+</html>

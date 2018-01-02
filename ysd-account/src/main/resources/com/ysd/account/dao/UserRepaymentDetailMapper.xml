@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ysd.account.dao.UserRepaymentDetailMapper">
+  <resultMap id="BaseResultMap" type="com.ysd.account.entity.UserRepaymentDetail">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="borrow_id" jdbcType="INTEGER" property="borrowId" />
+    <result column="account" jdbcType="VARCHAR" property="account" />
+    <result column="repayment_account" jdbcType="VARCHAR" property="repaymentAccount" />
+    <result column="interest" jdbcType="VARCHAR" property="interest" />
+    <result column="repayment_yesaccount" jdbcType="VARCHAR" property="repaymentYesaccount" />
+    <result column="wait_account" jdbcType="VARCHAR" property="waitAccount" />
+    <result column="repayment_yesinterest" jdbcType="VARCHAR" property="repaymentYesinterest" />
+    <result column="wait_interest" jdbcType="VARCHAR" property="waitInterest" />
+    <result column="service_charge" jdbcType="VARCHAR" property="serviceCharge" />
+    <result column="profit" jdbcType="VARCHAR" property="profit" />
+    <result column="add_persion" jdbcType="VARCHAR" property="addPersion" />
+    <result column="operator_ip" jdbcType="VARCHAR" property="operatorIp" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="modify_date" jdbcType="TIMESTAMP" property="modifyDate" />
+    <result column="borrow_repayment_detail_id" jdbcType="INTEGER" property="borrowRepaymentDetailId" />
+    <result column="borrow_periods" jdbcType="INTEGER" property="borrowPeriods" />
+    <result column="repayment_date" jdbcType="TIMESTAMP" property="repaymentDate" />
+    <result column="borrow_detail_id" jdbcType="INTEGER" property="borrowDetailId" />
+    <result column="apply_continue_total" jdbcType="VARCHAR" property="applyContinueTotal" />
+    <result column="borrow_divides" jdbcType="INTEGER" property="borrowDivides" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, user_id, status, borrow_id, account, repayment_account, interest, repayment_yesaccount, 
+    wait_account, repayment_yesinterest, wait_interest, service_charge, profit, add_persion, 
+    operator_ip, create_date, modify_date, borrow_repayment_detail_id, borrow_periods, 
+    repayment_date, borrow_detail_id, apply_continue_total, borrow_divides
+  </sql>
+  <select id="selectByCriteria" parameterType="com.ysd.account.criteria.UserRepaymentDetailCriteria" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from fy_user_repayment_detail
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from fy_user_repayment_detail
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Integer">
+    delete from fy_user_repayment_detail
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByCriteria" parameterType="com.ysd.account.criteria.UserRepaymentDetailCriteria">
+    delete from fy_user_repayment_detail
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.ysd.account.entity.UserRepaymentDetail" useGeneratedKeys="true">
+    insert into fy_user_repayment_detail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="borrowId != null">
+        borrow_id,
+      </if>
+      <if test="account != null">
+        account,
+      </if>
+      <if test="repaymentAccount != null">
+        repayment_account,
+      </if>
+      <if test="interest != null">
+        interest,
+      </if>
+      <if test="repaymentYesaccount != null">
+        repayment_yesaccount,
+      </if>
+      <if test="waitAccount != null">
+        wait_account,
+      </if>
+      <if test="repaymentYesinterest != null">
+        repayment_yesinterest,
+      </if>
+      <if test="waitInterest != null">
+        wait_interest,
+      </if>
+      <if test="serviceCharge != null">
+        service_charge,
+      </if>
+      <if test="profit != null">
+        profit,
+      </if>
+      <if test="addPersion != null">
+        add_persion,
+      </if>
+      <if test="operatorIp != null">
+        operator_ip,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="modifyDate != null">
+        modify_date,
+      </if>
+      <if test="borrowRepaymentDetailId != null">
+        borrow_repayment_detail_id,
+      </if>
+      <if test="borrowPeriods != null">
+        borrow_periods,
+      </if>
+      <if test="repaymentDate != null">
+        repayment_date,
+      </if>
+      <if test="borrowDetailId != null">
+        borrow_detail_id,
+      </if>
+      <if test="applyContinueTotal != null">
+        apply_continue_total,
+      </if>
+      <if test="borrowDivides != null">
+        borrow_divides,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="borrowId != null">
+        #{borrowId,jdbcType=INTEGER},
+      </if>
+      <if test="account != null">
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="repaymentAccount != null">
+        #{repaymentAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="interest != null">
+        #{interest,jdbcType=VARCHAR},
+      </if>
+      <if test="repaymentYesaccount != null">
+        #{repaymentYesaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="waitAccount != null">
+        #{waitAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="repaymentYesinterest != null">
+        #{repaymentYesinterest,jdbcType=VARCHAR},
+      </if>
+      <if test="waitInterest != null">
+        #{waitInterest,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceCharge != null">
+        #{serviceCharge,jdbcType=VARCHAR},
+      </if>
+      <if test="profit != null">
+        #{profit,jdbcType=VARCHAR},
+      </if>
+      <if test="addPersion != null">
+        #{addPersion,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorIp != null">
+        #{operatorIp,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyDate != null">
+        #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="borrowRepaymentDetailId != null">
+        #{borrowRepaymentDetailId,jdbcType=INTEGER},
+      </if>
+      <if test="borrowPeriods != null">
+        #{borrowPeriods,jdbcType=INTEGER},
+      </if>
+      <if test="repaymentDate != null">
+        #{repaymentDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="borrowDetailId != null">
+        #{borrowDetailId,jdbcType=INTEGER},
+      </if>
+      <if test="applyContinueTotal != null">
+        #{applyContinueTotal,jdbcType=VARCHAR},
+      </if>
+      <if test="borrowDivides != null">
+        #{borrowDivides,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByCriteria" parameterType="com.ysd.account.criteria.UserRepaymentDetailCriteria" resultType="java.lang.Long">
+    select count(*) from fy_user_repayment_detail
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByCriteria" parameterType="map">
+    update fy_user_repayment_detail
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.userId != null">
+        user_id = #{record.userId,jdbcType=INTEGER},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=VARCHAR},
+      </if>
+      <if test="record.borrowId != null">
+        borrow_id = #{record.borrowId,jdbcType=INTEGER},
+      </if>
+      <if test="record.account != null">
+        account = #{record.account,jdbcType=VARCHAR},
+      </if>
+      <if test="record.repaymentAccount != null">
+        repayment_account = #{record.repaymentAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.interest != null">
+        interest = #{record.interest,jdbcType=VARCHAR},
+      </if>
+      <if test="record.repaymentYesaccount != null">
+        repayment_yesaccount = #{record.repaymentYesaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.waitAccount != null">
+        wait_account = #{record.waitAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.repaymentYesinterest != null">
+        repayment_yesinterest = #{record.repaymentYesinterest,jdbcType=VARCHAR},
+      </if>
+      <if test="record.waitInterest != null">
+        wait_interest = #{record.waitInterest,jdbcType=VARCHAR},
+      </if>
+      <if test="record.serviceCharge != null">
+        service_charge = #{record.serviceCharge,jdbcType=VARCHAR},
+      </if>
+      <if test="record.profit != null">
+        profit = #{record.profit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addPersion != null">
+        add_persion = #{record.addPersion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.operatorIp != null">
+        operator_ip = #{record.operatorIp,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createDate != null">
+        create_date = #{record.createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifyDate != null">
+        modify_date = #{record.modifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.borrowRepaymentDetailId != null">
+        borrow_repayment_detail_id = #{record.borrowRepaymentDetailId,jdbcType=INTEGER},
+      </if>
+      <if test="record.borrowPeriods != null">
+        borrow_periods = #{record.borrowPeriods,jdbcType=INTEGER},
+      </if>
+      <if test="record.repaymentDate != null">
+        repayment_date = #{record.repaymentDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.borrowDetailId != null">
+        borrow_detail_id = #{record.borrowDetailId,jdbcType=INTEGER},
+      </if>
+      <if test="record.applyContinueTotal != null">
+        apply_continue_total = #{record.applyContinueTotal,jdbcType=VARCHAR},
+      </if>
+      <if test="record.borrowDivides != null">
+        borrow_divides = #{record.borrowDivides,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateById" parameterType="com.ysd.account.entity.UserRepaymentDetail">
+    update fy_user_repayment_detail
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="borrowId != null">
+        borrow_id = #{borrowId,jdbcType=INTEGER},
+      </if>
+      <if test="account != null">
+        account = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="repaymentAccount != null">
+        repayment_account = #{repaymentAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="interest != null">
+        interest = #{interest,jdbcType=VARCHAR},
+      </if>
+      <if test="repaymentYesaccount != null">
+        repayment_yesaccount = #{repaymentYesaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="waitAccount != null">
+        wait_account = #{waitAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="repaymentYesinterest != null">
+        repayment_yesinterest = #{repaymentYesinterest,jdbcType=VARCHAR},
+      </if>
+      <if test="waitInterest != null">
+        wait_interest = #{waitInterest,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceCharge != null">
+        service_charge = #{serviceCharge,jdbcType=VARCHAR},
+      </if>
+      <if test="profit != null">
+        profit = #{profit,jdbcType=VARCHAR},
+      </if>
+      <if test="addPersion != null">
+        add_persion = #{addPersion,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorIp != null">
+        operator_ip = #{operatorIp,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyDate != null">
+        modify_date = #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="borrowRepaymentDetailId != null">
+        borrow_repayment_detail_id = #{borrowRepaymentDetailId,jdbcType=INTEGER},
+      </if>
+      <if test="borrowPeriods != null">
+        borrow_periods = #{borrowPeriods,jdbcType=INTEGER},
+      </if>
+      <if test="repaymentDate != null">
+        repayment_date = #{repaymentDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="borrowDetailId != null">
+        borrow_detail_id = #{borrowDetailId,jdbcType=INTEGER},
+      </if>
+      <if test="applyContinueTotal != null">
+        apply_continue_total = #{applyContinueTotal,jdbcType=VARCHAR},
+      </if>
+      <if test="borrowDivides != null">
+        borrow_divides = #{borrowDivides,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
