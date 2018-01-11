@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ysd.asset.dao.BorrowRepaymentDetailMapper">
+  <resultMap id="BaseResultMap" type="com.ysd.asset.entity.BorrowRepaymentDetail">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="webstatus" jdbcType="INTEGER" property="webstatus" />
+    <result column="order_num" jdbcType="INTEGER" property="orderNum" />
+    <result column="borrow_id" jdbcType="INTEGER" property="borrowId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="repayment_time" jdbcType="TIMESTAMP" property="repaymentTime" />
+    <result column="repayment_yestime" jdbcType="TIMESTAMP" property="repaymentYestime" />
+    <result column="repayment_account" jdbcType="VARCHAR" property="repaymentAccount" />
+    <result column="repayment_yesaccount" jdbcType="VARCHAR" property="repaymentYesaccount" />
+    <result column="late_days" jdbcType="INTEGER" property="lateDays" />
+    <result column="late_interest" jdbcType="VARCHAR" property="lateInterest" />
+    <result column="interest" jdbcType="VARCHAR" property="interest" />
+    <result column="capital" jdbcType="VARCHAR" property="capital" />
+    <result column="capital_taste" jdbcType="VARCHAR" property="capitalTaste" />
+    <result column="capital_direct" jdbcType="VARCHAR" property="capitalDirect" />
+    <result column="forfeit" jdbcType="VARCHAR" property="forfeit" />
+    <result column="reminder_fee" jdbcType="VARCHAR" property="reminderFee" />
+    <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="operator_id" jdbcType="VARCHAR" property="operatorId" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="modify_date" jdbcType="TIMESTAMP" property="modifyDate" />
+    <result column="repayment_date_int" jdbcType="INTEGER" property="repaymentDateInt" />
+    <result column="reward" jdbcType="VARCHAR" property="reward" />
+    <result column="recharge_status" jdbcType="INTEGER" property="rechargeStatus" />
+    <result column="recharge_money" jdbcType="DECIMAL" property="rechargeMoney" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, status, webstatus, order_num, borrow_id, user_id, repayment_time, repayment_yestime, 
+    repayment_account, repayment_yesaccount, late_days, late_interest, interest, capital, 
+    capital_taste, capital_direct, forfeit, reminder_fee, add_time, operator_id, create_date, 
+    modify_date, repayment_date_int, reward, recharge_status, recharge_money
+  </sql>
+  <select id="selectByCriteria" parameterType="com.ysd.asset.criteria.BorrowRepaymentDetailCriteria" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from fy_borrow_repayment_detail
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from fy_borrow_repayment_detail
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Integer">
+    delete from fy_borrow_repayment_detail
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByCriteria" parameterType="com.ysd.asset.criteria.BorrowRepaymentDetailCriteria">
+    delete from fy_borrow_repayment_detail
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.ysd.asset.entity.BorrowRepaymentDetail" useGeneratedKeys="true">
+    insert into fy_borrow_repayment_detail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="webstatus != null">
+        webstatus,
+      </if>
+      <if test="orderNum != null">
+        order_num,
+      </if>
+      <if test="borrowId != null">
+        borrow_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="repaymentTime != null">
+        repayment_time,
+      </if>
+      <if test="repaymentYestime != null">
+        repayment_yestime,
+      </if>
+      <if test="repaymentAccount != null">
+        repayment_account,
+      </if>
+      <if test="repaymentYesaccount != null">
+        repayment_yesaccount,
+      </if>
+      <if test="lateDays != null">
+        late_days,
+      </if>
+      <if test="lateInterest != null">
+        late_interest,
+      </if>
+      <if test="interest != null">
+        interest,
+      </if>
+      <if test="capital != null">
+        capital,
+      </if>
+      <if test="capitalTaste != null">
+        capital_taste,
+      </if>
+      <if test="capitalDirect != null">
+        capital_direct,
+      </if>
+      <if test="forfeit != null">
+        forfeit,
+      </if>
+      <if test="reminderFee != null">
+        reminder_fee,
+      </if>
+      <if test="addTime != null">
+        add_time,
+      </if>
+      <if test="operatorId != null">
+        operator_id,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="modifyDate != null">
+        modify_date,
+      </if>
+      <if test="repaymentDateInt != null">
+        repayment_date_int,
+      </if>
+      <if test="reward != null">
+        reward,
+      </if>
+      <if test="rechargeStatus != null">
+        recharge_status,
+      </if>
+      <if test="rechargeMoney != null">
+        recharge_money,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="webstatus != null">
+        #{webstatus,jdbcType=INTEGER},
+      </if>
+      <if test="orderNum != null">
+        #{orderNum,jdbcType=INTEGER},
+      </if>
+      <if test="borrowId != null">
+        #{borrowId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="repaymentTime != null">
+        #{repaymentTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="repaymentYestime != null">
+        #{repaymentYestime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="repaymentAccount != null">
+        #{repaymentAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="repaymentYesaccount != null">
+        #{repaymentYesaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="lateDays != null">
+        #{lateDays,jdbcType=INTEGER},
+      </if>
+      <if test="lateInterest != null">
+        #{lateInterest,jdbcType=VARCHAR},
+      </if>
+      <if test="interest != null">
+        #{interest,jdbcType=VARCHAR},
+      </if>
+      <if test="capital != null">
+        #{capital,jdbcType=VARCHAR},
+      </if>
+      <if test="capitalTaste != null">
+        #{capitalTaste,jdbcType=VARCHAR},
+      </if>
+      <if test="capitalDirect != null">
+        #{capitalDirect,jdbcType=VARCHAR},
+      </if>
+      <if test="forfeit != null">
+        #{forfeit,jdbcType=VARCHAR},
+      </if>
+      <if test="reminderFee != null">
+        #{reminderFee,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operatorId != null">
+        #{operatorId,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyDate != null">
+        #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="repaymentDateInt != null">
+        #{repaymentDateInt,jdbcType=INTEGER},
+      </if>
+      <if test="reward != null">
+        #{reward,jdbcType=VARCHAR},
+      </if>
+      <if test="rechargeStatus != null">
+        #{rechargeStatus,jdbcType=INTEGER},
+      </if>
+      <if test="rechargeMoney != null">
+        #{rechargeMoney,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByCriteria" parameterType="com.ysd.asset.criteria.BorrowRepaymentDetailCriteria" resultType="java.lang.Long">
+    select count(*) from fy_borrow_repayment_detail
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByCriteria" parameterType="map">
+    update fy_borrow_repayment_detail
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.webstatus != null">
+        webstatus = #{record.webstatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.orderNum != null">
+        order_num = #{record.orderNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.borrowId != null">
+        borrow_id = #{record.borrowId,jdbcType=INTEGER},
+      </if>
+      <if test="record.userId != null">
+        user_id = #{record.userId,jdbcType=INTEGER},
+      </if>
+      <if test="record.repaymentTime != null">
+        repayment_time = #{record.repaymentTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.repaymentYestime != null">
+        repayment_yestime = #{record.repaymentYestime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.repaymentAccount != null">
+        repayment_account = #{record.repaymentAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.repaymentYesaccount != null">
+        repayment_yesaccount = #{record.repaymentYesaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lateDays != null">
+        late_days = #{record.lateDays,jdbcType=INTEGER},
+      </if>
+      <if test="record.lateInterest != null">
+        late_interest = #{record.lateInterest,jdbcType=VARCHAR},
+      </if>
+      <if test="record.interest != null">
+        interest = #{record.interest,jdbcType=VARCHAR},
+      </if>
+      <if test="record.capital != null">
+        capital = #{record.capital,jdbcType=VARCHAR},
+      </if>
+      <if test="record.capitalTaste != null">
+        capital_taste = #{record.capitalTaste,jdbcType=VARCHAR},
+      </if>
+      <if test="record.capitalDirect != null">
+        capital_direct = #{record.capitalDirect,jdbcType=VARCHAR},
+      </if>
+      <if test="record.forfeit != null">
+        forfeit = #{record.forfeit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reminderFee != null">
+        reminder_fee = #{record.reminderFee,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addTime != null">
+        add_time = #{record.addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.operatorId != null">
+        operator_id = #{record.operatorId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createDate != null">
+        create_date = #{record.createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifyDate != null">
+        modify_date = #{record.modifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.repaymentDateInt != null">
+        repayment_date_int = #{record.repaymentDateInt,jdbcType=INTEGER},
+      </if>
+      <if test="record.reward != null">
+        reward = #{record.reward,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rechargeStatus != null">
+        recharge_status = #{record.rechargeStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.rechargeMoney != null">
+        recharge_money = #{record.rechargeMoney,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateById" parameterType="com.ysd.asset.entity.BorrowRepaymentDetail">
+    update fy_borrow_repayment_detail
+    <set>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="webstatus != null">
+        webstatus = #{webstatus,jdbcType=INTEGER},
+      </if>
+      <if test="orderNum != null">
+        order_num = #{orderNum,jdbcType=INTEGER},
+      </if>
+      <if test="borrowId != null">
+        borrow_id = #{borrowId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="repaymentTime != null">
+        repayment_time = #{repaymentTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="repaymentYestime != null">
+        repayment_yestime = #{repaymentYestime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="repaymentAccount != null">
+        repayment_account = #{repaymentAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="repaymentYesaccount != null">
+        repayment_yesaccount = #{repaymentYesaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="lateDays != null">
+        late_days = #{lateDays,jdbcType=INTEGER},
+      </if>
+      <if test="lateInterest != null">
+        late_interest = #{lateInterest,jdbcType=VARCHAR},
+      </if>
+      <if test="interest != null">
+        interest = #{interest,jdbcType=VARCHAR},
+      </if>
+      <if test="capital != null">
+        capital = #{capital,jdbcType=VARCHAR},
+      </if>
+      <if test="capitalTaste != null">
+        capital_taste = #{capitalTaste,jdbcType=VARCHAR},
+      </if>
+      <if test="capitalDirect != null">
+        capital_direct = #{capitalDirect,jdbcType=VARCHAR},
+      </if>
+      <if test="forfeit != null">
+        forfeit = #{forfeit,jdbcType=VARCHAR},
+      </if>
+      <if test="reminderFee != null">
+        reminder_fee = #{reminderFee,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null">
+        add_time = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operatorId != null">
+        operator_id = #{operatorId,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyDate != null">
+        modify_date = #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="repaymentDateInt != null">
+        repayment_date_int = #{repaymentDateInt,jdbcType=INTEGER},
+      </if>
+      <if test="reward != null">
+        reward = #{reward,jdbcType=VARCHAR},
+      </if>
+      <if test="rechargeStatus != null">
+        recharge_status = #{rechargeStatus,jdbcType=INTEGER},
+      </if>
+      <if test="rechargeMoney != null">
+        recharge_money = #{rechargeMoney,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

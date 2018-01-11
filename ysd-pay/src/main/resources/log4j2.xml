@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<configuration status="debug">
+    <properties>  
+        <Property name="fileName">./logs/ysd-pay.log</Property>
+        <Property name="backupFilePattern">./logs/ysd-pay-%d{yyyyMMddHH}-%i.log</Property>
+
+        <Property name="payFileName">./logs/ysd-pay-payinfo.log</Property>
+        <Property name="payBackupFilePattern">./logs/ysd-pay-payinfo-%d{yyyyMMddHH}-%i.log</Property>
+    </properties>  
+    <Appenders>  
+        <Console name="Console" target="SYSTEM_OUT">  
+            <ThresholdFilter level="trace" onMatch="ACCEPT" onMismatch="DENY" />   
+            <PatternLayout pattern="[%5p] [%-d{yyyy-MM-dd HH:mm:ss,SSS}] [%c.%M:%L] %m%n" />  
+        </Console>
+        <RollingFile name="RollingFile" fileName="${fileName}" filePattern="${backupFilePattern}">  
+            <PatternLayout>  
+                <pattern>[%d{ISO8601}] %C{1}(%M:%L): %m%n</pattern>  
+            </PatternLayout>  
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="24" modulate="true"/>  
+                <SizeBasedTriggeringPolicy size="30MB"/>
+            </Policies>  
+            <DefaultRolloverStrategy max="10"/>  
+        </RollingFile>
+
+        <RollingFile name="PayRollingFile" fileName="${payFileName}" filePattern="${payBackupFilePattern}">
+            <PatternLayout>
+                <pattern>[%d{ISO8601}] %C{1}(%M:%L): %m%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="24" modulate="true"/>
+                <SizeBasedTriggeringPolicy size="30MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="10"/>
+        </RollingFile>
+    </Appenders>
+    <Loggers>  
+        <root level="debug" >
+            <appender-ref ref="Console" />
+            <appender-ref ref="RollingFile" />
+        </root>
+        <logger name="com.ysd" level="debug" />
+        <logger name="org.springframework.boot.loader.WarLauncher" level="debug" />
+
+        <!-- 方式一 -->
+        <!--<logger name="com.ysd.pay.controller.HelloController" level="debug" additivity="false">
+            <appender-ref ref="PayRollingFile" />
+        </logger>-->
+
+        <!-- 方式二 -->
+        <logger name="paylogger" level="debug" additivity="false">
+            <appender-ref ref="PayRollingFile" />
+        </logger>
+
+
+    </Loggers>
+</configuration>

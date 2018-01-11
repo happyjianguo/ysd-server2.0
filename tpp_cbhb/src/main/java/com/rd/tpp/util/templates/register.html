@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<title>渤海银行注册页面</title>
+</head>
+<body>
+    <div align="center">渤海银行注册页面跳转中，请不要关闭页面...</div>
+	<form action="${cbhbSubmitUrl!}" method="post" id="frm1" style="display: none;">
+		<input type="text" name="char_set" value="${charSet!}" />       	         
+		<input type="text" name="partner_id" value="${partnerId!}" />
+		<input type="text" name="version_no" value="${versionNo!}" />
+		<input type="text" name="biz_type" value="${bizType!}" />
+		<input type="text" name="sign_type" value="${signType!}" />
+		<input type="text" name="MerBillNo" value="${merBillNo!}" />
+		<input type="text" name="OpenType" value="${openType!}" />
+		<input type="text" name="IdentType" value="${identType!}" />
+		<input type="text" name="IdentNo" value="${identNo!}" />
+		<input type="text" name="UsrName" value="${usrName!}" />
+		<input type="text" name="MobileNo" value="${mobileNo!}" />
+		<input type="text" name="OpenBankId" value="${openBankId!}" />
+		<input type="text" name="OpenAcctId" value="${openAcctId!}" />
+		<input type="text" name="PageReturnUrl" value="${pageReturnUrl!}" />
+		<input type="text" name="BgRetUrl" value="${bgRetUrl!}" />						
+		<input type="text" name="MerPriv" value="${merPriv!}" />
+		<textarea rows="6" cols="60" name="mac">${mac!}</textarea>
+		<!-- <input type="submit" value="提交"> -->
+	</form>
+	<script language="javascript">
+		document.getElementById("frm1").submit();
+	</script>
+</body>
+</html>

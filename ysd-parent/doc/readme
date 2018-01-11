@@ -1,0 +1,29 @@
+#ysd-pay工程启动,启动前确认ysd-base ysd-user ysd-account ysd-asset已经安装到本地
+mvn spring-boot:run
+
+#lib目录中的jar需要安装到本地,安装命令如下
+mvn install:install-file -DgroupId=com.epoint.plugin -DartifactId=epoint-maven-plugin -Dversion=1.0-SNAPSHOT-Dfile=epoint-maven-plugin.jar -Dpackaging=jar
+
+#相关代码自动生成。安装epoint-maven-plugin.jar到本地仓库。其他配置可能考ysd-user/src/test/resources/generator
+
+#工程说明
+ysd-base 基础类
+ysd-user 会员,投资人和借款人管理。jar形式
+ysd-account 账户系统管理
+ysd-asset 标的管理。创建标,票审核,放款等
+
+ysd-pay 通过http协议,提供支付服务
+
+mvn install:install-file -DgroupId=com.hisun -DartifactId=merchant_sdk -Dversion=1.0 -Dfile=merchant_sdk-1.0.jar -Dpackaging=jar
+
+mvn install:install-file -dgroupid=com.rd -dartifactid=tpp_cbhb -dversion=2.1.0.0 -dfile=tpp_cbhb-2.1.jar -dpackaging=jar
+
+
+
+网关
+mvn install:install-file -DgroupId=com.allin -DartifactId=allinpay-security -Dversion=1.0 -Dfile=allinpay-security-1.0.jar -Dpackaging=jar
+
+
+mvn install:install-file -DgroupId=com.allin -DartifactId=allinpay-security-support -Dversion=1.0 -Dfile=allinpay-security-support-1.0.jar -Dpackaging=jar
+
+mvn install:install-file -DgroupId=com.allin -DartifactId=refundOrder -Dversion=1.0 -Dfile=refundOrder-1.0.jar -Dpackaging=jar

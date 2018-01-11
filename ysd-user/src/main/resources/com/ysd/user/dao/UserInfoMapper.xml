@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ysd.user.dao.UserInfoMapper">
+  <resultMap id="BaseResultMap" type="com.ysd.user.entity.UserInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="modify_date" jdbcType="TIMESTAMP" property="modifyDate" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="private_name" jdbcType="VARCHAR" property="privateName" />
+    <result column="private_charter_img" jdbcType="VARCHAR" property="privateCharterImg" />
+    <result column="private_tax_img" jdbcType="VARCHAR" property="privateTaxImg" />
+    <result column="private_organization_img" jdbcType="VARCHAR" property="privateOrganizationImg" />
+    <result column="tax_registration" jdbcType="VARCHAR" property="taxRegistration" />
+    <result column="registration" jdbcType="VARCHAR" property="registration" />
+    <result column="private_phone" jdbcType="VARCHAR" property="privatePhone" />
+    <result column="linkman" jdbcType="VARCHAR" property="linkman" />
+    <result column="registered_capital" jdbcType="VARCHAR" property="registeredCapital" />
+    <result column="organization" jdbcType="VARCHAR" property="organization" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="others" jdbcType="VARCHAR" property="others" />
+    <result column="add_ip" jdbcType="VARCHAR" property="addIp" />
+    <result column="clsj" jdbcType="TIMESTAMP" property="clsj" />
+    <result column="yyqx_start" jdbcType="TIMESTAMP" property="yyqxStart" />
+    <result column="yyqx_end" jdbcType="TIMESTAMP" property="yyqxEnd" />
+    <result column="marry" jdbcType="VARCHAR" property="marry" />
+    <result column="company_name" jdbcType="VARCHAR" property="companyName" />
+    <result column="company_office" jdbcType="VARCHAR" property="companyOffice" />
+    <result column="education_record" jdbcType="VARCHAR" property="educationRecord" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, create_date, modify_date, user_id, private_name, private_charter_img, private_tax_img, 
+    private_organization_img, tax_registration, registration, private_phone, linkman, 
+    registered_capital, organization, address, others, add_ip, clsj, yyqx_start, yyqx_end, 
+    marry, company_name, company_office, education_record
+  </sql>
+  <select id="selectByCriteria" parameterType="com.ysd.user.criteria.UserInfoCriteria" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from fy_user_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from fy_user_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Integer">
+    delete from fy_user_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByCriteria" parameterType="com.ysd.user.criteria.UserInfoCriteria">
+    delete from fy_user_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.ysd.user.entity.UserInfo" useGeneratedKeys="true">
+    insert into fy_user_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="modifyDate != null">
+        modify_date,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="privateName != null">
+        private_name,
+      </if>
+      <if test="privateCharterImg != null">
+        private_charter_img,
+      </if>
+      <if test="privateTaxImg != null">
+        private_tax_img,
+      </if>
+      <if test="privateOrganizationImg != null">
+        private_organization_img,
+      </if>
+      <if test="taxRegistration != null">
+        tax_registration,
+      </if>
+      <if test="registration != null">
+        registration,
+      </if>
+      <if test="privatePhone != null">
+        private_phone,
+      </if>
+      <if test="linkman != null">
+        linkman,
+      </if>
+      <if test="registeredCapital != null">
+        registered_capital,
+      </if>
+      <if test="organization != null">
+        organization,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="others != null">
+        others,
+      </if>
+      <if test="addIp != null">
+        add_ip,
+      </if>
+      <if test="clsj != null">
+        clsj,
+      </if>
+      <if test="yyqxStart != null">
+        yyqx_start,
+      </if>
+      <if test="yyqxEnd != null">
+        yyqx_end,
+      </if>
+      <if test="marry != null">
+        marry,
+      </if>
+      <if test="companyName != null">
+        company_name,
+      </if>
+      <if test="companyOffice != null">
+        company_office,
+      </if>
+      <if test="educationRecord != null">
+        education_record,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyDate != null">
+        #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="privateName != null">
+        #{privateName,jdbcType=VARCHAR},
+      </if>
+      <if test="privateCharterImg != null">
+        #{privateCharterImg,jdbcType=VARCHAR},
+      </if>
+      <if test="privateTaxImg != null">
+        #{privateTaxImg,jdbcType=VARCHAR},
+      </if>
+      <if test="privateOrganizationImg != null">
+        #{privateOrganizationImg,jdbcType=VARCHAR},
+      </if>
+      <if test="taxRegistration != null">
+        #{taxRegistration,jdbcType=VARCHAR},
+      </if>
+      <if test="registration != null">
+        #{registration,jdbcType=VARCHAR},
+      </if>
+      <if test="privatePhone != null">
+        #{privatePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="linkman != null">
+        #{linkman,jdbcType=VARCHAR},
+      </if>
+      <if test="registeredCapital != null">
+        #{registeredCapital,jdbcType=VARCHAR},
+      </if>
+      <if test="organization != null">
+        #{organization,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="others != null">
+        #{others,jdbcType=VARCHAR},
+      </if>
+      <if test="addIp != null">
+        #{addIp,jdbcType=VARCHAR},
+      </if>
+      <if test="clsj != null">
+        #{clsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="yyqxStart != null">
+        #{yyqxStart,jdbcType=TIMESTAMP},
+      </if>
+      <if test="yyqxEnd != null">
+        #{yyqxEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="marry != null">
+        #{marry,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null">
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyOffice != null">
+        #{companyOffice,jdbcType=VARCHAR},
+      </if>
+      <if test="educationRecord != null">
+        #{educationRecord,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByCriteria" parameterType="com.ysd.user.criteria.UserInfoCriteria" resultType="java.lang.Long">
+    select count(*) from fy_user_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByCriteria" parameterType="map">
+    update fy_user_info
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.createDate != null">
+        create_date = #{record.createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifyDate != null">
+        modify_date = #{record.modifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.userId != null">
+        user_id = #{record.userId,jdbcType=INTEGER},
+      </if>
+      <if test="record.privateName != null">
+        private_name = #{record.privateName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.privateCharterImg != null">
+        private_charter_img = #{record.privateCharterImg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.privateTaxImg != null">
+        private_tax_img = #{record.privateTaxImg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.privateOrganizationImg != null">
+        private_organization_img = #{record.privateOrganizationImg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.taxRegistration != null">
+        tax_registration = #{record.taxRegistration,jdbcType=VARCHAR},
+      </if>
+      <if test="record.registration != null">
+        registration = #{record.registration,jdbcType=VARCHAR},
+      </if>
+      <if test="record.privatePhone != null">
+        private_phone = #{record.privatePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.linkman != null">
+        linkman = #{record.linkman,jdbcType=VARCHAR},
+      </if>
+      <if test="record.registeredCapital != null">
+        registered_capital = #{record.registeredCapital,jdbcType=VARCHAR},
+      </if>
+      <if test="record.organization != null">
+        organization = #{record.organization,jdbcType=VARCHAR},
+      </if>
+      <if test="record.address != null">
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.others != null">
+        others = #{record.others,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addIp != null">
+        add_ip = #{record.addIp,jdbcType=VARCHAR},
+      </if>
+      <if test="record.clsj != null">
+        clsj = #{record.clsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.yyqxStart != null">
+        yyqx_start = #{record.yyqxStart,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.yyqxEnd != null">
+        yyqx_end = #{record.yyqxEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.marry != null">
+        marry = #{record.marry,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyName != null">
+        company_name = #{record.companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyOffice != null">
+        company_office = #{record.companyOffice,jdbcType=VARCHAR},
+      </if>
+      <if test="record.educationRecord != null">
+        education_record = #{record.educationRecord,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateById" parameterType="com.ysd.user.entity.UserInfo">
+    update fy_user_info
+    <set>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyDate != null">
+        modify_date = #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="privateName != null">
+        private_name = #{privateName,jdbcType=VARCHAR},
+      </if>
+      <if test="privateCharterImg != null">
+        private_charter_img = #{privateCharterImg,jdbcType=VARCHAR},
+      </if>
+      <if test="privateTaxImg != null">
+        private_tax_img = #{privateTaxImg,jdbcType=VARCHAR},
+      </if>
+      <if test="privateOrganizationImg != null">
+        private_organization_img = #{privateOrganizationImg,jdbcType=VARCHAR},
+      </if>
+      <if test="taxRegistration != null">
+        tax_registration = #{taxRegistration,jdbcType=VARCHAR},
+      </if>
+      <if test="registration != null">
+        registration = #{registration,jdbcType=VARCHAR},
+      </if>
+      <if test="privatePhone != null">
+        private_phone = #{privatePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="linkman != null">
+        linkman = #{linkman,jdbcType=VARCHAR},
+      </if>
+      <if test="registeredCapital != null">
+        registered_capital = #{registeredCapital,jdbcType=VARCHAR},
+      </if>
+      <if test="organization != null">
+        organization = #{organization,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="others != null">
+        others = #{others,jdbcType=VARCHAR},
+      </if>
+      <if test="addIp != null">
+        add_ip = #{addIp,jdbcType=VARCHAR},
+      </if>
+      <if test="clsj != null">
+        clsj = #{clsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="yyqxStart != null">
+        yyqx_start = #{yyqxStart,jdbcType=TIMESTAMP},
+      </if>
+      <if test="yyqxEnd != null">
+        yyqx_end = #{yyqxEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="marry != null">
+        marry = #{marry,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null">
+        company_name = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyOffice != null">
+        company_office = #{companyOffice,jdbcType=VARCHAR},
+      </if>
+      <if test="educationRecord != null">
+        education_record = #{educationRecord,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

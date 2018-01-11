@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ysd.account.dao.UserAccountDetailMapper">
+  <resultMap id="BaseResultMap" type="com.ysd.account.entity.UserAccountDetail">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="modify_date" jdbcType="TIMESTAMP" property="modifyDate" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="total" jdbcType="DECIMAL" property="total" />
+    <result column="money" jdbcType="DECIMAL" property="money" />
+    <result column="use_money" jdbcType="DECIMAL" property="useMoney" />
+    <result column="no_use_money" jdbcType="DECIMAL" property="noUseMoney" />
+    <result column="collection" jdbcType="DECIMAL" property="collection" />
+    <result column="operatorer" jdbcType="VARCHAR" property="operatorer" />
+    <result column="to_user" jdbcType="INTEGER" property="toUser" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="operator_ip" jdbcType="VARCHAR" property="operatorIp" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="investor_collection_capital" jdbcType="DECIMAL" property="investorCollectionCapital" />
+    <result column="investor_collection_interest" jdbcType="DECIMAL" property="investorCollectionInterest" />
+    <result column="borrower_collection_capital" jdbcType="DECIMAL" property="borrowerCollectionCapital" />
+    <result column="borrower_collection_interest" jdbcType="DECIMAL" property="borrowerCollectionInterest" />
+    <result column="continue_total" jdbcType="DECIMAL" property="continueTotal" />
+    <result column="award_money" jdbcType="DECIMAL" property="awardMoney" />
+    <result column="borrow_id" jdbcType="INTEGER" property="borrowId" />
+    <result column="taste_money" jdbcType="DECIMAL" property="tasteMoney" />
+    <result column="is_look" jdbcType="INTEGER" property="isLook" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, create_date, modify_date, type, total, money, use_money, no_use_money, collection, 
+    operatorer, to_user, remark, add_time, operator_ip, user_id, investor_collection_capital, 
+    investor_collection_interest, borrower_collection_capital, borrower_collection_interest, 
+    continue_total, award_money, borrow_id, taste_money, is_look
+  </sql>
+  <select id="selectByCriteria" parameterType="com.ysd.account.criteria.UserAccountDetailCriteria" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from fy_user_account_detail
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from fy_user_account_detail
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Integer">
+    delete from fy_user_account_detail
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByCriteria" parameterType="com.ysd.account.criteria.UserAccountDetailCriteria">
+    delete from fy_user_account_detail
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.ysd.account.entity.UserAccountDetail" useGeneratedKeys="true">
+    insert into fy_user_account_detail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="modifyDate != null">
+        modify_date,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="total != null">
+        total,
+      </if>
+      <if test="money != null">
+        money,
+      </if>
+      <if test="useMoney != null">
+        use_money,
+      </if>
+      <if test="noUseMoney != null">
+        no_use_money,
+      </if>
+      <if test="collection != null">
+        collection,
+      </if>
+      <if test="operatorer != null">
+        operatorer,
+      </if>
+      <if test="toUser != null">
+        to_user,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="addTime != null">
+        add_time,
+      </if>
+      <if test="operatorIp != null">
+        operator_ip,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="investorCollectionCapital != null">
+        investor_collection_capital,
+      </if>
+      <if test="investorCollectionInterest != null">
+        investor_collection_interest,
+      </if>
+      <if test="borrowerCollectionCapital != null">
+        borrower_collection_capital,
+      </if>
+      <if test="borrowerCollectionInterest != null">
+        borrower_collection_interest,
+      </if>
+      <if test="continueTotal != null">
+        continue_total,
+      </if>
+      <if test="awardMoney != null">
+        award_money,
+      </if>
+      <if test="borrowId != null">
+        borrow_id,
+      </if>
+      <if test="tasteMoney != null">
+        taste_money,
+      </if>
+      <if test="isLook != null">
+        is_look,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyDate != null">
+        #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="total != null">
+        #{total,jdbcType=DECIMAL},
+      </if>
+      <if test="money != null">
+        #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="useMoney != null">
+        #{useMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="noUseMoney != null">
+        #{noUseMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="collection != null">
+        #{collection,jdbcType=DECIMAL},
+      </if>
+      <if test="operatorer != null">
+        #{operatorer,jdbcType=VARCHAR},
+      </if>
+      <if test="toUser != null">
+        #{toUser,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operatorIp != null">
+        #{operatorIp,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="investorCollectionCapital != null">
+        #{investorCollectionCapital,jdbcType=DECIMAL},
+      </if>
+      <if test="investorCollectionInterest != null">
+        #{investorCollectionInterest,jdbcType=DECIMAL},
+      </if>
+      <if test="borrowerCollectionCapital != null">
+        #{borrowerCollectionCapital,jdbcType=DECIMAL},
+      </if>
+      <if test="borrowerCollectionInterest != null">
+        #{borrowerCollectionInterest,jdbcType=DECIMAL},
+      </if>
+      <if test="continueTotal != null">
+        #{continueTotal,jdbcType=DECIMAL},
+      </if>
+      <if test="awardMoney != null">
+        #{awardMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="borrowId != null">
+        #{borrowId,jdbcType=INTEGER},
+      </if>
+      <if test="tasteMoney != null">
+        #{tasteMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="isLook != null">
+        #{isLook,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByCriteria" parameterType="com.ysd.account.criteria.UserAccountDetailCriteria" resultType="java.lang.Long">
+    select count(*) from fy_user_account_detail
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByCriteria" parameterType="map">
+    update fy_user_account_detail
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.createDate != null">
+        create_date = #{record.createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifyDate != null">
+        modify_date = #{record.modifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.type != null">
+        type = #{record.type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.total != null">
+        total = #{record.total,jdbcType=DECIMAL},
+      </if>
+      <if test="record.money != null">
+        money = #{record.money,jdbcType=DECIMAL},
+      </if>
+      <if test="record.useMoney != null">
+        use_money = #{record.useMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="record.noUseMoney != null">
+        no_use_money = #{record.noUseMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="record.collection != null">
+        collection = #{record.collection,jdbcType=DECIMAL},
+      </if>
+      <if test="record.operatorer != null">
+        operatorer = #{record.operatorer,jdbcType=VARCHAR},
+      </if>
+      <if test="record.toUser != null">
+        to_user = #{record.toUser,jdbcType=INTEGER},
+      </if>
+      <if test="record.remark != null">
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addTime != null">
+        add_time = #{record.addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.operatorIp != null">
+        operator_ip = #{record.operatorIp,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userId != null">
+        user_id = #{record.userId,jdbcType=INTEGER},
+      </if>
+      <if test="record.investorCollectionCapital != null">
+        investor_collection_capital = #{record.investorCollectionCapital,jdbcType=DECIMAL},
+      </if>
+      <if test="record.investorCollectionInterest != null">
+        investor_collection_interest = #{record.investorCollectionInterest,jdbcType=DECIMAL},
+      </if>
+      <if test="record.borrowerCollectionCapital != null">
+        borrower_collection_capital = #{record.borrowerCollectionCapital,jdbcType=DECIMAL},
+      </if>
+      <if test="record.borrowerCollectionInterest != null">
+        borrower_collection_interest = #{record.borrowerCollectionInterest,jdbcType=DECIMAL},
+      </if>
+      <if test="record.continueTotal != null">
+        continue_total = #{record.continueTotal,jdbcType=DECIMAL},
+      </if>
+      <if test="record.awardMoney != null">
+        award_money = #{record.awardMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="record.borrowId != null">
+        borrow_id = #{record.borrowId,jdbcType=INTEGER},
+      </if>
+      <if test="record.tasteMoney != null">
+        taste_money = #{record.tasteMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="record.isLook != null">
+        is_look = #{record.isLook,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateById" parameterType="com.ysd.account.entity.UserAccountDetail">
+    update fy_user_account_detail
+    <set>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyDate != null">
+        modify_date = #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="total != null">
+        total = #{total,jdbcType=DECIMAL},
+      </if>
+      <if test="money != null">
+        money = #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="useMoney != null">
+        use_money = #{useMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="noUseMoney != null">
+        no_use_money = #{noUseMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="collection != null">
+        collection = #{collection,jdbcType=DECIMAL},
+      </if>
+      <if test="operatorer != null">
+        operatorer = #{operatorer,jdbcType=VARCHAR},
+      </if>
+      <if test="toUser != null">
+        to_user = #{toUser,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null">
+        add_time = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operatorIp != null">
+        operator_ip = #{operatorIp,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="investorCollectionCapital != null">
+        investor_collection_capital = #{investorCollectionCapital,jdbcType=DECIMAL},
+      </if>
+      <if test="investorCollectionInterest != null">
+        investor_collection_interest = #{investorCollectionInterest,jdbcType=DECIMAL},
+      </if>
+      <if test="borrowerCollectionCapital != null">
+        borrower_collection_capital = #{borrowerCollectionCapital,jdbcType=DECIMAL},
+      </if>
+      <if test="borrowerCollectionInterest != null">
+        borrower_collection_interest = #{borrowerCollectionInterest,jdbcType=DECIMAL},
+      </if>
+      <if test="continueTotal != null">
+        continue_total = #{continueTotal,jdbcType=DECIMAL},
+      </if>
+      <if test="awardMoney != null">
+        award_money = #{awardMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="borrowId != null">
+        borrow_id = #{borrowId,jdbcType=INTEGER},
+      </if>
+      <if test="tasteMoney != null">
+        taste_money = #{tasteMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="isLook != null">
+        is_look = #{isLook,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
